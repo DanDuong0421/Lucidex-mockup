@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="vi" style=""><head>
+<!DOCTYPE html><html lang="vi" style=""><head></head><body class="bg-white text-ink min-h-screen flex flex-col selection:bg-blue-100 selection:text-academic-navy"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Lucidex - Nền tảng xác thực văn bằng đại học pháp định</title>
@@ -63,7 +63,6 @@
       background-color: #D6E3FF;
       color: #002045;
     }
-    /* Sắc nét, trang nghiêm với shadow xanh học thuật tinh tế */
     .shadow-diploma {
       box-shadow: 
         0 1px 3px rgba(15, 23, 42, 0.04),
@@ -73,12 +72,6 @@
     .shadow-navy {
       box-shadow: 0 10px 25px -5px rgba(0, 32, 69, 0.12), 0 8px 10px -6px rgba(0, 32, 69, 0.06);
     }
-    /* Camera lens viewer canvas transition with cubic-bezier */
-    .camera-target {
-      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-      transform-origin: center center;
-    }
-    /* Academic trust subtle geometric lattice */
     .academic-grid-bg {
       background-color: #FFFFFF;
       background-image: radial-gradient(#0F4C81 0.5px, transparent 0.5px);
@@ -86,11 +79,184 @@
       background-position: 0 0;
       opacity: 1;
     }
+    .guilloche-pattern {
+      background-image: repeating-radial-gradient(ellipse at 50% 50%, rgba(0, 32, 69, 0.02) 0px, rgba(0, 32, 69, 0.02) 2px, transparent 3px, transparent 6px),
+                        repeating-linear-gradient(45deg, rgba(0, 99, 152, 0.02) 0px, rgba(0, 99, 152, 0.02) 1px, transparent 1px, transparent 8px);
+    }
+    /* Realistic Single Magnifying Glass Rig */
+    .loupe-rig {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      pointer-events: none;
+      z-index: 50;
+      will-change: transform;
+      top: 0;
+      left: 0;
+      transform: translate3d(-999px, -999px, 0);
+      transition: opacity 0.25s ease;
+    }
+    /* Tròng kính lúp tròn chính xác cắt theo tâm thấu kính */
+    .loupe-glass {
+      width: 172px;
+      height: 172px;
+      border-radius: 50%;
+      position: absolute;
+      top: 14px;
+      left: 94px;
+      overflow: hidden;
+      box-shadow: 
+        inset 0 0 24px rgba(0, 32, 69, 0.35),
+        inset 0 3px 6px rgba(255, 255, 255, 0.8),
+        0 14px 28px rgba(15, 23, 42, 0.35);
+      background: #ffffff;
+      z-index: 10;
+    }
+    /* Chùm lóa quang học góc kính */
+    .loupe-glass::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 18px;
+      width: 80px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 60%, transparent 100%);
+      transform: rotate(-30deg);
+      z-index: 15;
+      pointer-events: none;
+    }
+    /* Thước ngắm vi mô (reticle) */
+    .loupe-reticle {
+      position: absolute;
+      inset: 0;
+      z-index: 12;
+      pointer-events: none;
+    }
+    .loupe-reticle::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: rgba(0, 99, 152, 0.32);
+    }
+    .loupe-reticle::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 15%;
+      bottom: 15%;
+      width: 1px;
+      background: rgba(0, 99, 152, 0.32);
+    }
+    .loupe-reticle-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      margin-top: -12px;
+      margin-left: -12px;
+      border-radius: 50%;
+      border: 1px dashed rgba(0, 99, 152, 0.45);
+      z-index: 13;
+      pointer-events: none;
+    }
+    /* Nội dung phóng đại bên trong kính */
+    .loupe-zoomed-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transform-origin: 0 0;
+      will-change: transform;
+    }
+    /* Đồ họa kính lúp kim loại chân thực đè lên viền */
+    .loupe-frame-art {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 280px;
+      pointer-events: none;
+      z-index: 20;
+      filter: drop-shadow(6px 14px 20px rgba(0, 20, 50, 0.35));
+    }
+    /* Zoom Slider Styling */
+    input[type=range].academic-slider {
+      -webkit-appearance: none;
+      background: #e2e8f0;
+      border-radius: 9999px;
+      height: 6px;
+      outline: none;
+    }
+    input[type=range].academic-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #002045;
+      border: 2px solid #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    input[type=range].academic-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      background: #006398;
+    }
   </style>
-</head>
-<body class="bg-white text-ink min-h-screen flex flex-col selection:bg-blue-100 selection:text-academic-navy">
 <!-- CỐ ĐỊNH NAV (TRẮNG TINH KHÔI, ĐƯỜNG KẺ BLUE-SLATE) -->
-<header class="fixed top-0 left-0 right-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-rule shadow-xs">
+<style>
+  @keyframes diplomaFloat3D {
+    0%, 100% {
+      transform: perspective(1200px) translateY(0px) rotateX(2.5deg) rotateY(-2deg) rotateZ(0.3deg);
+    }
+    50% {
+      transform: perspective(1200px) translateY(-10px) rotateX(-1deg) rotateY(2deg) rotateZ(-0.3deg);
+    }
+  }
+  @keyframes shadowBreathe {
+    0%, 100% {
+      transform: scale(0.95);
+      opacity: 0.45;
+    }
+    50% {
+      transform: scale(1.04);
+      opacity: 0.22;
+    }
+  }
+  .diploma-3d-wrapper {
+    perspective: 1200px;
+    position: relative;
+  }
+  .diploma-float-card {
+    animation: diplomaFloat3D 6.5s ease-in-out infinite;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .diploma-float-card:hover {
+    animation-play-state: paused;
+    transform: perspective(1200px) translateY(-14px) rotateX(4deg) rotateY(-2deg) scale(1.015);
+  }
+  .diploma-shadow-ground {
+    position: absolute;
+    bottom: -18px;
+    left: 8%;
+    right: 8%;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0, 32, 69, 0.4) 0%, rgba(0, 32, 69, 0.1) 50%, transparent 80%);
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: 0;
+    animation: shadowBreathe 6.5s ease-in-out infinite;
+  }
+</style><header class="fixed top-0 left-0 right-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-rule shadow-xs">
 <div class="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between"><div class="flex items-center gap-4"><a class="flex items-center gap-3 group" href="#"><img alt="Lucidex Logo" class="h-6 w-auto object-contain brightness-95 contrast-125 transition-transform group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-cc_onCtySqMRWCMjjCL6rAUC84oYilCBW1OUqRKTpvE2auVw30qxF4r15AoiyJpAL6pp6tpbW4gp0zS5gCxc8dEhPVymi_0j9RrTbWjWse5OLVe68wUJZhe8bdAZH8fiRgMuN9IPGYucRYqbg43nzfva-6R9oq8ppM-ngbxn0JvebpsD_1yiaN5UJb9EnQz6Qyhx86Aw6gIEP3hQG7-QrXfpsG5qOVfOd-d6G4U0R7dB_wjytzjoR1FoICtPAZMmvg"></a></div><nav class="hidden md:flex items-center gap-1.5 text-xs text-ink-muted p-1 bg-surface-light/70 border border-rule rounded-full shadow-xs font-sans"><a class="px-3.5 py-1.5 rounded-full bg-academic-navy text-white font-sans text-xs font-semibold shadow-xs transition-all" href="#canh-1">Tấm bằng</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-camera">Zoom văn bằng</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-2">Con dấu &amp; Quy chuẩn</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-3">Chuỗi 3 bên</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-4">Nhật ký thẩm định</a></nav><div class="flex items-center gap-3"><a class="inline-flex items-center justify-center font-sans text-xs font-semibold px-4 py-2 rounded-full bg-academic-navy text-white hover:bg-academic-blue hover:shadow-navy transition-all shadow-sm gap-1.5" href="#canh-camera"><svg class="w-3.5 h-3.5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"></circle><path d="M20 20L16 16" stroke-linecap="round" stroke-width="2"></path></svg><span class="">Tra cứu chi tiết</span></a></div></div>
 </header>
 <main class="w-full pt-16 flex-1 overflow-x-hidden">
@@ -100,13 +266,11 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 <!-- Cột 2 đến 6: Nội dung chính lề trái -->
 <div class="lg:col-start-2 lg:col-span-5 flex flex-col items-start z-10">
-
 <h1 class="font-serif text-4xl sm:text-5xl lg:text-[54px] text-ink leading-[1.15] tracking-tight mb-6 font-bold">Xác thực và <span class="text-academic-blue font-serif font-bold">bảo chứng tức thì</span><br class="hidden sm:inline"> mọi văn bằng &amp; chứng chỉ.</h1>
 <p class="font-sans text-base lg:text-[16.5px] text-ink-muted leading-relaxed max-w-[480px] mb-8"><strong class="font-bold text-academic-navy">Lucidex</strong> thay thế quy trình công chứng và xác minh thủ công kéo dài hàng tuần bằng hạ tầng mật mã W3C DID bất biến. Thẩm định nguồn gốc văn bằng, bảng điểm và chứng chỉ đào tạo trong 3 giây.</p>
 <!-- Nút chuyển đổi phong cách Xanh Đậm / Viền Slate -->
 <div class="flex flex-wrap items-center gap-4 justify-center">
-<a class="inline-flex items-center justify-center font-sans text-sm font-semibold px-7 py-3 rounded-full bg-academic-navy text-white hover:bg-academic-blue hover:shadow-navy transition-all" href="#canh-camera"><span class="">Khám phá ngay</span><svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
-
+<a class="inline-flex items-center justify-center font-sans text-sm font-semibold px-7 py-3 rounded-full bg-academic-navy text-white hover:bg-academic-blue hover:shadow-navy transition-all" href="#canh-camera"><span class="">Khám phá ngay</span><svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
 </div>
 <!-- Chi tiết phôi bằng công báo theo tông Xanh - Trắng - Đen -->
 <div class="mt-12 pt-6 border-t border-rule w-full flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-[11px] text-ink uppercase tracking-wider justify-center"><div class="">
@@ -149,7 +313,7 @@
 </div>
 </div>
 <!-- Main Outer Cover Showcase Card Container -->
-<div class="relative rounded-doc p-2.5 bg-gradient-to-b from-white via-surface-light to-surface-blue border border-rule-blue shadow-diploma">
+<div class="relative rounded-doc p-2.5 bg-gradient-to-b from-white via-surface-light to-surface-blue border border-rule-blue shadow-diploma diploma-float-card">
 <!-- COVER 0: BẰNG TIẾN SĨ (BURGUNDY / ĐỎ ĐÔ SẪM DA HẠT MẠ VÀNG KIM) -->
 <div class="diploma-cover-item relative w-full h-[450px] sm:h-[480px] rounded-doc overflow-hidden shadow-2xl transition-all duration-500 block" id="diploma-cover-0" style="background: radial-gradient(circle at 50% 35%, #42080c 0%, #290306 70%, #150103 100%); box-shadow: inset 0 0 100px rgba(0,0,0,0.85), 0 25px 50px -12px rgba(15,23,42,0.5);">
 <!-- Spine Fold Crease Simulation -->
@@ -336,12 +500,11 @@
 </div>
 </div>
 </div>
-</div>
+</div><div class="diploma-shadow-ground"></div>
 <!-- Bottom Bar: Badge & Jump to Zoom Action -->
 <div class="mt-3 flex items-center justify-between text-ink-muted font-mono text-xs px-2">
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-academic-blue"></span>
-
 </div>
 <a class="text-[11px] text-academic-blue font-semibold hover:underline flex items-center gap-1" href="#canh-camera">
 <span class="">Lật mở ruột bằng &amp; soi kính</span>
@@ -396,124 +559,225 @@
 <section class="w-full border-b border-rule bg-surface-light" id="canh-camera"><div class="w-full px-4 sm:px-8 lg:px-12 py-12 lg:py-16">
 <!-- Header Section for Camera Journey -->
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-end">
-<div class="lg:col-span-8">
-
+<div class="lg:col-span-7">
 <h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold tracking-tight mb-2">
         Kính vi mô kiểm định bảo an đa tầng.
       </h2>
-<p class="font-sans text-sm lg:text-base text-ink-muted leading-relaxed max-w-3xl">
-        Điều khiển thấu kính quang học di chuyển qua 4 lớp bảo chứng pháp định: từ tổng quan phôi bằng trắng tinh, hoa văn an ninh guilloche, con dấu số W3C DID dập mực bảo an đến mã băm mật mã SHA-256 đối soát tức thì.
+<p class="font-sans text-sm lg:text-base text-ink-muted leading-relaxed max-w-2xl">
+        Rê kính lúp trực tiếp trên bề mặt văn bằng hoặc bấm chọn 4 mốc bảo chứng để phóng đại quang học chi tiết: hoa văn Guilloche chống sao chép, con dấu số dập nổi W3C DID, và chuỗi mã băm SHA-256 đối soát.
       </p>
 </div>
-<!-- Quick Stats & Manual Controls -->
-<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-3 font-mono">
-<div class="flex items-center gap-2">
-<button class="px-3.5 py-1.5 rounded-full border border-rule hover:border-academic-blue bg-white font-mono text-xs text-ink transition-all flex items-center gap-1 shadow-xs hover:text-academic-blue" onclick="stepCamera(-1)" type="button">
-<span class="">‹ Trước</span>
+<!-- Quick Stats & Manual Controls + Zoom Level Controls -->
+<div class="lg:col-span-5 flex flex-col items-start lg:items-end justify-between gap-3 font-mono">
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center gap-1 bg-white border border-rule-blue rounded-full p-1 shadow-xs">
+<span class="text-[10px] text-ink-muted px-2 font-semibold">TỈ LỆ ZOOM:</span>
+<button class="zoom-ratio-btn px-2.5 py-1 rounded-full text-xs font-semibold hover:bg-surface-blue transition-colors text-ink-muted" data-zoom="1.5" onclick="setManualZoom(1.5, this)" type="button">1.5x</button>
+<button class="zoom-ratio-btn px-2.5 py-1 rounded-full text-xs font-semibold bg-academic-navy text-white shadow-xs" data-zoom="2.5" onclick="setManualZoom(2.5, this)" type="button">2.5x</button>
+<button class="zoom-ratio-btn px-2.5 py-1 rounded-full text-xs font-semibold hover:bg-surface-blue transition-colors text-ink-muted" data-zoom="3.2" onclick="setManualZoom(3.2, this)" type="button">3.2x</button>
+<button class="zoom-ratio-btn px-2.5 py-1 rounded-full text-xs font-semibold hover:bg-surface-blue transition-colors text-ink-muted" data-zoom="4.0" onclick="setManualZoom(4.0, this)" type="button">4.0x</button>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-full border border-rule hover:border-academic-blue bg-white font-mono text-xs text-ink transition-all flex items-center gap-1 shadow-xs hover:text-academic-blue" onclick="stepCamera(-1)" title="Mốc kiểm định trước" type="button">
+<span class="">‹</span>
 </button>
-<button class="px-3.5 py-1.5 rounded-full border border-rule hover:border-academic-blue bg-white font-mono text-xs text-ink transition-all flex items-center gap-1 shadow-xs hover:text-academic-blue" onclick="stepCamera(1)" type="button">
-<span class="">Tiếp theo ›</span>
+<button class="px-3 py-1.5 rounded-full border border-rule hover:border-academic-blue bg-white font-mono text-xs text-ink transition-all flex items-center gap-1 shadow-xs hover:text-academic-blue" onclick="stepCamera(1)" title="Mốc kiểm định kế tiếp" type="button">
+<span class="">›</span>
 </button>
 </div>
-<div class="text-[10.5px] text-ink-muted/80 uppercase tracking-wider font-semibold">
-        ỐNG KÍNH QUANG HỌC MACRO 4K • TỰ ĐỘNG CÂN CHỈNH
-      </div>
+</div>
+<!-- Slider zoom fine-tuning -->
+<div class="flex items-center gap-3 w-full lg:w-auto bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-rule">
+<span class="text-[10px] text-academic-navy font-bold uppercase tracking-wider">Ống Kính Vi Mô:</span>
+<input aria-label="Độ phóng đại kính quang học" class="academic-slider w-28 sm:w-36" id="zoom-slider" max="4.0" min="1.2" oninput="onSliderZoomChange(this.value)" step="0.1" type="range" value="2.5">
+<span class="text-[10px] text-academic-blue font-bold min-w-[32px] text-right" id="slider-val-badge">2.5x</span>
+</div>
 </div>
 </div>
 <!-- Camera Journey Interactive Timeline Milestones -->
 <div class="max-w-7xl mx-auto mb-6">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 p-1.5 bg-white border border-rule-blue rounded-doc shadow-sm">
-<button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent bg-academic-navy text-white font-semibold" data-view="overview" onclick="setCameraView('overview', this)" type="button">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 p-1.5 bg-white border border-rule-blue rounded-doc shadow-sm"><button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent bg-academic-navy text-white font-semibold" data-view="overview" onclick="setCameraView('overview', this)" type="button">
 <span class="block text-[9px] text-blue-200 tracking-widest uppercase font-bold">MỐC 01</span>
 <span class="block text-[11px] truncate mt-0.5">Toàn cảnh văn bằng</span>
 </button>
 <button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent text-ink-muted font-medium hover:bg-surface-blue" data-view="guilloche" onclick="setCameraView('guilloche', this)" type="button">
-<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 02 (x2.5)</span>
+<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 02 (X2.50)</span>
 <span class="block text-[11px] truncate mt-0.5">Hoa văn Guilloche</span>
 </button>
 <button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent text-ink-muted font-medium hover:bg-surface-blue" data-view="seal" onclick="setCameraView('seal', this)" type="button">
-<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 03 (x2.8)</span>
+<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 03 (X2.50)</span>
 <span class="block text-[11px] truncate mt-0.5">Dấu số &amp; Chữ ký</span>
 </button>
 <button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent text-ink-muted font-medium hover:bg-surface-blue" data-view="hash" onclick="setCameraView('hash', this)" type="button">
-<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 04 (x2.2)</span>
+<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 04 (X2.50)</span>
 <span class="block text-[11px] truncate mt-0.5">Mã băm SHA-256</span>
-</button>
-</div>
+</button></div>
 </div>
 <!-- Full-Width Viewport Camera chuyên biệt -->
-<div class="w-full">
+<div class="w-full max-w-7xl mx-auto">
 <div class="relative bg-white border border-rule-blue overflow-hidden shadow-diploma rounded-doc w-full">
-<!-- Khung kính ngắm chính với mặt bằng chi tiết di chuyển -->
-<div class="relative h-[560px] sm:h-[640px] lg:h-[680px] w-full overflow-hidden bg-slate-100/70 flex items-center justify-center p-6 select-none cursor-grab active:cursor-grabbing" id="camera-frame">
-<!-- Viewfinder Corner Optics Guides -->
+<!-- HUD Status & Optical Parameters Top Bar -->
+<div class="flex flex-wrap items-center justify-between border-b border-rule-blue px-4 py-2.5 bg-surface-light font-mono text-[11px] gap-2">
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5 text-academic-navy font-bold tracking-wider">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="" id="cam-mode-tag">CHẾ ĐỘ: TOÀN CẢNH PHÁP ĐỊNH</span>
+</span>
+<span class="text-rule-blue hidden sm:inline">|</span>
+<span class="text-ink-muted text-[10px] hidden sm:inline" id="cam-optic-spec">THẨM ĐỊNH QUANG HỌC 4K • CẢM BIẾN PHỔ CỰC TÍM (UV/IR)</span>
+</div>
+<div class="flex items-center gap-4 text-[10.5px]">
+<span class="text-academic-blue font-bold px-2 py-0.5 rounded bg-blue-50 border border-blue-200" id="camera-zoom-indicator">ĐỘ PHÓNG ĐẠI: 2.50x (250%)</span>
+<span class="text-ink-muted font-medium" id="camera-coord-indicator">TỌA ĐỘ: [X: 276 | Y: 18]</span>
+</div>
+</div>
+<!-- Main Viewport Canvas with Realistic Optical Magnifying Glass Lens -->
+<div class="relative min-h-[580px] sm:min-h-[660px] w-full overflow-hidden bg-slate-100/70 flex items-center justify-center p-4 sm:p-8 select-none" id="camera-frame">
+<!-- Viewfinder Outer Corner Optics Guides -->
 <div class="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-academic-navy/70 pointer-events-none z-30"></div>
 <div class="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-academic-navy/70 pointer-events-none z-30"></div>
 <div class="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-academic-navy/70 pointer-events-none z-30"></div>
 <div class="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-academic-navy/70 pointer-events-none z-30"></div>
-<!-- Lưới tọa độ Reticle chìm mô phỏng kính hiển vi quang học -->
-<div class="absolute inset-0 pointer-events-none z-20 opacity-30 flex items-center justify-center">
-<div class="w-full h-px bg-blue-300"></div>
-<div class="h-full w-px bg-blue-300 absolute"></div>
-<div class="w-48 h-48 rounded-full border border-academic-blue/40 absolute"></div>
-<div class="w-24 h-24 rounded-full border border-dashed border-academic-blue/30 absolute"></div>
-<div class="w-10 h-10 border border-trust-accent/50 absolute"></div>
-</div>
-<!-- VĂN BẰNG ĐẦY ĐỦ TRONG KHUNG ỐNG KÍNH (NỀN TRẮNG SẠCH SẼ, VIỀN XANH HỌC THUẬT) -->
-<div class="camera-target bg-white border-2 border-rule-blue p-8 rounded-doc shadow-md relative w-full" id="diploma-subject" style="transform: scale(1) translate(0px, 0px);">
-<!-- Khung hoa văn viền góc -->
-<div class="border-[2px] border-blue-900/20 p-6 relative bg-white">
-<!-- Góc bảo an số hóa intaglio -->
-<div class="absolute top-2 left-2 px-2 py-1 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue">
+<!-- DUY NHẤT 1 KÍNH LÚP QUANG HỌC PHÓNG ĐẠI CHÂN THỰC TƯƠNG TÁC (SINGLE REALISTIC OPTICAL MAGNIFIER) -->
+<div class="loupe-rig" id="loupe-rig" style="transform: translate3d(239.111px, -48.8611px, 0px); opacity: 1;">
+<!-- Tròng kính lúp tròn trong suốt chứa nội dung văn bằng phóng to 2.5x -->
+<div class="loupe-glass">
+<div class="loupe-zoomed-content" id="loupe-zoomed-target" style="transform: translate3d(-604px, 41.1041px, 0px) scale(2.5);"><div class="bg-white border-2 border-rule-blue p-6 sm:p-9 rounded-doc shadow-xl relative w-full max-w-4xl guilloche-pattern cursor-crosshair z-20" id="diploma-subject-clone" style="margin: 0px; pointer-events: none; position: absolute; top: 0px; left: 0px; box-shadow: none; cursor: default; width: 896px; height: 593.639px;">
+<!-- Khung hoa văn viền an ninh đôi chuẩn công quyền -->
+<div class="border-2 border-blue-950/25 p-5 sm:p-7 relative bg-white/95">
+<!-- Viền góc bảo an số hóa intaglio -->
+<div class="absolute top-2 left-2 px-2 py-0.5 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue" id="target-guilloche-box">
 <span class="font-bold text-trust-blue">[ZONE 01]</span> GUILLOCHE_INCLUSION_AREA_NW
-            </div>
-<div class="absolute top-2 right-2 px-2 py-1 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue">
+    </div>
+<div class="absolute top-2 right-2 px-2 py-0.5 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue">
 <span class="font-bold text-trust-blue">[ZONE 02]</span> COTTON_SECURITY_FIBER_NE
-            </div>
-<!-- Quốc hiệu -->
+    </div>
+<!-- Quốc hiệu & Tiêu đề -->
 <div class="text-center pb-5 border-b border-rule">
-<p class="font-mono text-[11px] tracking-[0.2em] text-ink-muted uppercase font-medium">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+<p class="font-mono text-[10.5px] tracking-[0.22em] text-ink-muted uppercase font-semibold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
 <p class="font-sans text-xs font-semibold text-ink mt-1">Độc lập - Tự do - Hạnh phúc</p>
 <div class="w-20 h-px bg-rule-blue mx-auto my-3"></div>
-<h3 class="font-serif text-3xl text-academic-navy font-bold tracking-tight">BẰNG CỬ NHÂN</h3>
+<h3 class="font-serif text-2xl sm:text-3xl text-academic-navy font-bold tracking-tight">BẰNG CỬ NHÂN</h3>
 <p class="font-serif italic text-xs text-ink-muted">THE DEGREE OF BACHELOR</p>
 </div>
-<!-- Thân bằng -->
+<!-- Thân bằng & Thông tin sinh viên -->
 <div class="py-6 text-center">
-<p class="font-sans text-xs text-ink-muted uppercase tracking-wider">HIỆU TRƯỞNG TRƯỜNG ĐẠI HỌC BÁCH KHOA CẤP CHO</p>
-<p class="font-serif text-3xl font-bold text-ink my-2 tracking-tight">NGUYỄN VĂN HẢI</p>
-<p class="font-sans text-xs text-ink-muted leading-relaxed">
-                Sinh ngày 12 tháng 08 năm 2002 tại Thành phố Hồ Chí Minh<br>
-                Đã hoàn thành chương trình đào tạo chính quy khóa 2020 - 2024<br>
-                Ngành đào tạo: <strong class="font-semibold text-academic-navy">Khoa học Máy tính</strong> • Xếp loại tốt nghiệp: <strong class="font-semibold text-academic-navy">Xuất sắc</strong>
+<p class="font-sans text-xs text-ink-muted uppercase tracking-wider font-medium">HIỆU TRƯỞNG TRƯỜNG ĐẠI HỌC BÁCH KHOA CẤP CHO</p>
+<p class="font-serif text-2xl sm:text-3xl font-bold text-ink my-2 tracking-tight">NGUYỄN VĂN HẢI</p>
+<p class="font-sans text-xs text-ink-muted leading-relaxed max-w-xl mx-auto">
+        Sinh ngày 12 tháng 08 năm 2002 tại Thành phố Hồ Chí Minh<br>
+        Đã hoàn thành chương trình đào tạo chính quy khóa 2020 - 2024<br>
+        Ngành đào tạo: <strong class="font-semibold text-academic-navy">Khoa học Máy tính</strong> • Xếp loại tốt nghiệp: <strong class="font-semibold text-academic-navy">Xuất sắc</strong>
 </p>
 </div>
-<!-- Chân bằng: Mã băm & Con dấu số -->
+<!-- Chân bằng: Mã băm SHA-256 & Con dấu số Lucidex -->
 <div class="pt-5 border-t border-rule grid grid-cols-12 gap-4 items-end" id="diploma-footer-zone">
-<!-- Vùng băm mật mã: Nền xanh học thuật nhẹ -->
-<div class="col-span-7 font-mono p-3 bg-surface-blue border border-blue-200 relative rounded-doc" id="target-hash-box">
+<!-- Vùng băm mật mã -->
+<div class="col-span-7 font-mono p-3 bg-surface-blue/80 border border-blue-200 relative rounded-doc" id="target-hash-box">
 <div class="flex items-center justify-between mb-1">
 <span class="text-[9px] text-ink-muted uppercase font-semibold">SỐ VÀO SỔ CẤP BẰNG:</span>
 <span class="text-[11px] text-academic-navy font-bold">DHQG-HCM/2024/0912</span>
 </div>
 <div class="mt-1">
 <span class="text-[8.5px] text-ink-muted uppercase block">KHÓA BẢO NGUYÊN (SHA-256):</span>
-<span class="text-[10.5px] text-academic-blue font-mono break-all font-semibold select-all">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+<span class="text-[10.5px] text-academic-blue font-mono break-all font-semibold select-all tracking-tight">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
 </div>
 <div class="mt-2 pt-2 border-t border-blue-200/70 flex items-center justify-between text-[9px] text-ink">
 <span class="font-medium text-ink-muted">DID: did:lucidex:edu:vn:hcmut</span>
 <span class="text-trust-accent font-bold">● W3C VC V2.0 VALID</span>
 </div>
 </div>
-<!-- Vùng con dấu Lucidex vector SVG chính thức https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ -->
+<!-- Vùng con dấu số Lucidex -->
 <div class="col-span-5 flex flex-col items-center justify-center" id="target-seal-box">
-<div class="w-28 h-28 relative flex items-center justify-center p-0.5">
-<img alt="Con dấu số Lucidex" class="w-28 h-28 object-contain drop-shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ">
+<div class="w-24 h-24 sm:w-28 sm:h-28 relative flex items-center justify-center p-0.5">
+<img alt="Con dấu số Lucidex" class="w-full h-full object-contain drop-shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ">
 </div>
 <span class="font-mono text-[9px] text-ink-muted mt-1 uppercase font-semibold">Con dấu số Lucidex dập mực đỏ</span>
 </div>
 </div>
 </div>
+<!-- Hint badge overlaid at bottom right of subject -->
+<div class="absolute right-4 bottom-4 px-3 py-1.5 rounded-full bg-academic-navy/90 backdrop-blur-md text-white border border-blue-300/40 font-mono text-[10px] tracking-wider font-semibold z-20 shadow-md flex items-center gap-1.5 pointer-events-none">
+<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+<span class="">Kính vi mô quang học • Rê chuột để soi</span>
+</div>
+</div></div>
+<div class="loupe-reticle"></div>
+<div class="loupe-reticle-circle"></div>
+</div>
+<!-- Khung kính lúp kim loại chân thực với cán cầm nghiêng tinh xảo -->
+<img alt="Kính lúp quang học" class="loupe-frame-art object-contain pointer-events-none" src="https://lh3.googleusercontent.com/aida/AEtjO1WeaJbzkajhR6ChsUpxMt7a9-_1gBN-DUhgnisX-UgxrS77K84rwzj8FHtRXD05KXKmzjDTwyzmdx2_IWb618CLpCyEx3tGkerkJ3B60h5-PelV2B86mx8W8Z0r9F8blD6_J-tS-tvK5qgIfHRDCPJgg0xZmpbVtgWHNy66wvFqPZXMiHZAvNr6iMx4NxpuFJYw8k0UZ25Pzxr2AzV1G1W394OMB-kVTmagyM4aNc5btL6vlLhZILtweTA">
+</div>
+<!-- VĂN BẰNG BASE NGUYÊN BẢN (1X) TRÊN NỀN BÀN THẨM ĐỊNH -->
+<div class="bg-white border-2 border-rule-blue p-6 sm:p-9 rounded-doc shadow-xl relative w-full max-w-4xl guilloche-pattern cursor-crosshair z-20" id="diploma-subject">
+<!-- Khung hoa văn viền an ninh đôi chuẩn công quyền -->
+<div class="border-2 border-blue-950/25 p-5 sm:p-7 relative bg-white/95">
+<!-- Viền góc bảo an số hóa intaglio -->
+<div class="absolute top-2 left-2 px-2 py-0.5 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue" id="target-guilloche-box">
+<span class="font-bold text-trust-blue">[ZONE 01]</span> GUILLOCHE_INCLUSION_AREA_NW
+    </div>
+<div class="absolute top-2 right-2 px-2 py-0.5 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue">
+<span class="font-bold text-trust-blue">[ZONE 02]</span> COTTON_SECURITY_FIBER_NE
+    </div>
+<!-- Quốc hiệu & Tiêu đề -->
+<div class="text-center pb-5 border-b border-rule">
+<p class="font-mono text-[10.5px] tracking-[0.22em] text-ink-muted uppercase font-semibold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+<p class="font-sans text-xs font-semibold text-ink mt-1">Độc lập - Tự do - Hạnh phúc</p>
+<div class="w-20 h-px bg-rule-blue mx-auto my-3"></div>
+<h3 class="font-serif text-2xl sm:text-3xl text-academic-navy font-bold tracking-tight">BẰNG CỬ NHÂN</h3>
+<p class="font-serif italic text-xs text-ink-muted">THE DEGREE OF BACHELOR</p>
+</div>
+<!-- Thân bằng & Thông tin sinh viên -->
+<div class="py-6 text-center">
+<p class="font-sans text-xs text-ink-muted uppercase tracking-wider font-medium">HIỆU TRƯỞNG TRƯỜNG ĐẠI HỌC BÁCH KHOA CẤP CHO</p>
+<p class="font-serif text-2xl sm:text-3xl font-bold text-ink my-2 tracking-tight">NGUYỄN VĂN HẢI</p>
+<p class="font-sans text-xs text-ink-muted leading-relaxed max-w-xl mx-auto">
+        Sinh ngày 12 tháng 08 năm 2002 tại Thành phố Hồ Chí Minh<br>
+        Đã hoàn thành chương trình đào tạo chính quy khóa 2020 - 2024<br>
+        Ngành đào tạo: <strong class="font-semibold text-academic-navy">Khoa học Máy tính</strong> • Xếp loại tốt nghiệp: <strong class="font-semibold text-academic-navy">Xuất sắc</strong>
+</p>
+</div>
+<!-- Chân bằng: Mã băm SHA-256 & Con dấu số Lucidex -->
+<div class="pt-5 border-t border-rule grid grid-cols-12 gap-4 items-end" id="diploma-footer-zone">
+<!-- Vùng băm mật mã -->
+<div class="col-span-7 font-mono p-3 bg-surface-blue/80 border border-blue-200 relative rounded-doc" id="target-hash-box">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[9px] text-ink-muted uppercase font-semibold">SỐ VÀO SỔ CẤP BẰNG:</span>
+<span class="text-[11px] text-academic-navy font-bold">DHQG-HCM/2024/0912</span>
+</div>
+<div class="mt-1">
+<span class="text-[8.5px] text-ink-muted uppercase block">KHÓA BẢO NGUYÊN (SHA-256):</span>
+<span class="text-[10.5px] text-academic-blue font-mono break-all font-semibold select-all tracking-tight">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+</div>
+<div class="mt-2 pt-2 border-t border-blue-200/70 flex items-center justify-between text-[9px] text-ink">
+<span class="font-medium text-ink-muted">DID: did:lucidex:edu:vn:hcmut</span>
+<span class="text-trust-accent font-bold">● W3C VC V2.0 VALID</span>
+</div>
+</div>
+<!-- Vùng con dấu số Lucidex -->
+<div class="col-span-5 flex flex-col items-center justify-center" id="target-seal-box">
+<div class="w-24 h-24 sm:w-28 sm:h-28 relative flex items-center justify-center p-0.5">
+<img alt="Con dấu số Lucidex" class="w-full h-full object-contain drop-shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ">
+</div>
+<span class="font-mono text-[9px] text-ink-muted mt-1 uppercase font-semibold">Con dấu số Lucidex dập mực đỏ</span>
+</div>
+</div>
+</div>
+<!-- Hint badge overlaid at bottom right of subject -->
+<div class="absolute right-4 bottom-4 px-3 py-1.5 rounded-full bg-academic-navy/90 backdrop-blur-md text-white border border-blue-300/40 font-mono text-[10px] tracking-wider font-semibold z-20 shadow-md flex items-center gap-1.5 pointer-events-none">
+<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+<span class="">Kính vi mô quang học • Rê chuột để soi</span>
+</div>
+</div>
+</div>
+<!-- Bottom Explanatory Details Bar -->
+<div class="p-4 bg-white border-t border-rule-blue flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+<div>
+<span class="font-mono font-bold text-academic-navy block" id="cam-title">CHẾ ĐỘ 01: TOÀN CẢNH VĂN BẰNG (FULL OVERVIEW)</span>
+<p class="font-sans text-ink-muted text-[11.5px] mt-0.5" id="cam-desc">Di chuyển kính lúp tự do để khảo sát cấu trúc phôi bằng cotton 160g, thể thức chuẩn quốc gia và định danh số.</p>
+</div>
+<div class="flex items-center gap-2 shrink-0 font-mono text-[10.5px]">
+<span class="px-2 py-1 rounded bg-surface-blue text-academic-blue border border-blue-200 font-semibold">W3C DID SPECIFIED</span>
 </div>
 </div>
 </div>
@@ -581,7 +845,6 @@
 <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
 <div class="lg:col-start-2 lg:col-span-8">
-
 <h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold tracking-tight mb-3">
   Chuỗi tương tác ba bên khép kín.
 </h2>
@@ -718,7 +981,6 @@
 <div class="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
 <!-- Section Header: Team -->
 <div class="w-full flex flex-col items-center text-center mb-12">
-
 <h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold tracking-tight mb-3">
     Những người nghiên cứu và xây dựng nền tảng Lucidex.
   </h2>
@@ -876,7 +1138,6 @@
   </p>
 </div></div>
 </section>
-</main>
 <!-- FOOTER CHUẨN IN ẤN BẢO AN (NỀN XANH ĐEN MIDNIGHT NAVY #0B132B) -->
 <footer class="w-full bg-midnight text-white border-t border-blue-900/40">
 <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-16">
@@ -884,7 +1145,6 @@
 <div class="pb-10 mb-12 border-b border-blue-900/40">
 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
 <div>
-
 <div class="flex flex-wrap items-center gap-4">
 <div class="flex items-center gap-3">
 <img alt="Lucidex Logo" class="h-7 w-auto object-contain brightness-200 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWUgqUnXUcVF3qh6kvEDOAhCb4kII8euzeBIaCr84DstQFOI_ygNh-H_-RgiOxxFvbtHhdxW-nnHrF6VSm7U0Gan3rQnmlVXSmeDJL4D_Cpbhjf-5tzHIJ9esL7DXlr107pVyRvNjdFgfVoaEeGoTZy5C0-EHRT6A_24Q3ZsbtX8KQIQF9zulkxQS9KtiJtdheDqbTItqNwJsUq99gX7DQCV0S-3fB9ohcVb_pZ_YUm_00m2k-aLG0WpYgf-EhUIjSRA">
@@ -1009,101 +1269,259 @@
 </div>
 </div></div>
 </footer>
-<!-- SCRIPT ĐIỀU KHIỂN HÀNH TRÌNH CAMERA ZOOM VĂN BẰNG (INTERACTIVE CAMERA VIEWER) -->
+<!-- SCRIPT NÂNG CẤP KÍNH LÚP QUANG HỌC PHÓNG ĐẠI CHÂN THỰC 60FPS (DUY NHẤT 1 KÍNH) -->
 <script>
-  const cameraConfig = {
-    overview: {
-      scale: 1,
-      x: 0,
-      y: 0,
-      zoomText: 'ĐỘ PHÓNG ĐẠI: 1.00x (100%)',
-      coordText: 'TỌA ĐỘ: [X: 00 | Y: 00]',
-      title: 'CHẾ ĐỘ 01: TOÀN CẢNH VĂN BẰNG (FULL OVERVIEW)',
-      desc: 'Toàn văn chứng chỉ cử nhân trên nền phôi giấy cotton-cellulose 160g, thể thức chuẩn quốc gia kết hợp định danh số.'
-    },
-    guilloche: {
-      scale: 2.5,
-      x: 230,
-      y: 140,
-      zoomText: 'ĐỘ PHÓNG ĐẠI: 2.50x (250%)',
-      coordText: 'TỌA ĐỘ: [X: -230 | Y: -140]',
-      title: 'CHẾ ĐỘ 02: HOA VĂN GUILLOCHE & THỚ GIẤY COTTON CHỐNG SAO CHÉP',
-      desc: 'Cận cảnh viền an ninh intaglio với các đường vân sóng phức tạp và thớ sợi cellulose ngẫu nhiên chống làm giả quang học.'
-    },
-    seal: {
-      scale: 2.8,
-      x: -200,
-      y: -145,
-      zoomText: 'ĐỘ PHÓNG ĐẠI: 2.80x (280%)',
-      coordText: 'TỌA ĐỘ: [X: +200 | Y: +145]',
-      title: 'CHẾ ĐỘ 03: CẬN CẢNH CON DẤU SỐ LUCIDEX DẬP MỰC ĐỎ',
-      desc: 'Con dấu số vector bảo an sắc nét với chuỗi khắc chữ vi mô, chuẩn Ed25519/Secp256k1 và liên kết định danh tổ chức W3C DID.'
-    },
-    hash: {
-      scale: 2.2,
-      x: 150,
-      y: -140,
-      zoomText: 'ĐỘ PHÓNG ĐẠI: 2.20x (220%)',
-      coordText: 'TỌA ĐỘ: [X: -150 | Y: +140]',
-      title: 'CHẾ ĐỘ 04: KHÓA ĐỊNH DANH & MÃ BĂM BẢO NGUYÊN SHA-256',
-      desc: 'Bản in mã băm 256-bit độc bản của hồ sơ sinh viên, đối soát với cây Merkle của nhà trường để phát hiện sửa đổi tức thì.'
-    }
-  };
-
-  const viewKeys = ['overview', 'guilloche', 'seal', 'hash'];
-  let currentViewIndex = 0;
-
-  function setCameraView(viewKey, clickedButton) {
-    const config = cameraConfig[viewKey];
-    if (!config) return;
-
-    currentViewIndex = viewKeys.indexOf(viewKey);
-
+  (function() {
+    const frame = document.getElementById('camera-frame');
     const subject = document.getElementById('diploma-subject');
+    const loupeRig = document.getElementById('loupe-rig');
+    const zoomedTarget = document.getElementById('loupe-zoomed-target');
     const zoomIndicator = document.getElementById('camera-zoom-indicator');
     const coordIndicator = document.getElementById('camera-coord-indicator');
+    const modeTag = document.getElementById('cam-mode-tag');
+    const opticSpec = document.getElementById('cam-optic-spec');
     const titleEl = document.getElementById('cam-title');
     const descEl = document.getElementById('cam-desc');
+    const zoomSlider = document.getElementById('zoom-slider');
+    const sliderBadge = document.getElementById('slider-val-badge');
 
-    if (subject) {
-      subject.style.transform = `scale(${config.scale}) translate(${config.x}px, ${config.y}px)`;
+    // Nhân bản nội dung văn bằng sắc nét vào tròng kính lúp (Crystal-clear zoomed view)
+    function syncZoomClone() {
+      if (!subject || !zoomedTarget) return;
+      zoomedTarget.innerHTML = '';
+      const clone = subject.cloneNode(true);
+      clone.id = 'diploma-subject-clone';
+      clone.style.margin = '0';
+      clone.style.pointerEvents = 'none';
+      clone.style.position = 'absolute';
+      clone.style.top = '0';
+      clone.style.left = '0';
+      clone.style.boxShadow = 'none';
+      clone.style.cursor = 'default';
+      zoomedTarget.appendChild(clone);
     }
+    syncZoomClone();
 
-    if (zoomIndicator) zoomIndicator.innerText = config.zoomText;
-    if (coordIndicator) coordIndicator.innerText = config.coordText;
-    if (titleEl) titleEl.innerText = config.title;
-    if (descEl) descEl.innerText = config.desc;
+    // Hệ số phóng đại quang học mặc định trong thấu kính (chuẩn 2.50x)
+    let zoomLevel = 2.50;
+    // Tọa độ tâm tròng kính lúp bên trong khung 280x280 (cx: 180, cy: 100)
+    const lensCenterOffsetX = 180;
+    const lensCenterOffsetY = 100;
+    const lensRadius = 86; // Tròng kính 172px / 2
 
-    // Update active button state to academic navy
-    document.querySelectorAll('.camera-btn').forEach(btn => {
-      btn.classList.remove('bg-academic-navy', 'text-white', 'font-semibold');
-      btn.classList.add('text-ink-muted', 'font-medium');
-    });
+    let curX = 0, curY = 0;
+    let targetX = 0, targetY = 0;
+    let isMouseActive = false;
+    let animFrameId = null;
 
-    if (clickedButton) {
-      clickedButton.classList.add('bg-academic-navy', 'text-white', 'font-semibold');
-      clickedButton.classList.remove('text-ink-muted', 'font-medium');
-    } else {
-      const activeBtn = document.querySelector(`.camera-btn[data-view="${viewKey}"]`);
-      if (activeBtn) {
-        activeBtn.classList.add('bg-academic-navy', 'text-white', 'font-semibold');
-        activeBtn.classList.remove('text-ink-muted', 'font-medium');
+    // Các mốc kiểm định bảo an chuẩn
+    const PRESETS = {
+      overview: {
+        ratioX: 0.50,
+        ratioY: 0.44,
+        zoom: 2.50,
+        modeTag: 'CHẾ ĐỘ: TOÀN CẢNH PHÁP ĐỊNH',
+        opticSpec: 'THẨM ĐỊNH QUANG HỌC 4K • CẢM BIẾN PHỔ CỰC TÍM (UV/IR)',
+        title: 'CHẾ ĐỘ 01: TOÀN CẢNH VĂN BẰNG (FULL OVERVIEW)',
+        desc: 'Di chuyển kính lúp tự do để khảo sát cấu trúc phôi bằng cotton 160g, thể thức chuẩn quốc gia và định danh số.'
+      },
+      guilloche: {
+        ratioX: 0.16,
+        ratioY: 0.16,
+        zoom: 2.50,
+        modeTag: 'CHẾ ĐỘ: HOA VĂN GUILLOCHE BẢO MẬT',
+        opticSpec: 'VẠCH ĐO MICROMET 100µm • BẢO MẬT VÂN SÓNG INTAGLIO',
+        title: 'CHẾ ĐỘ 02: HOA VĂN GUILLOCHE & THỚ GIẤY COTTON CHỐNG SAO CHÉP',
+        desc: 'Cận cảnh viền an ninh intaglio với các đường vân sóng phức tạp và thớ sợi cellulose ngẫu nhiên chống làm giả quang học.'
+      },
+      seal: {
+        ratioX: 0.82,
+        ratioY: 0.78,
+        zoom: 2.50,
+        modeTag: 'CHẾ ĐỘ: THẨM ĐỊNH CON DẤU SỐ & CHỮ KÝ',
+        opticSpec: 'QUANG HỌC ED25519/SECP256K1 • DẬP MỰC MẬT MÃ W3C DID',
+        title: 'CHẾ ĐỘ 03: CẬN CẢNH CON DẤU SỐ LUCIDEX DẬP MỰC ĐỎ',
+        desc: 'Con dấu số vector bảo an sắc nét với chuỗi khắc chữ vi mô, chuẩn Ed25519/Secp256k1 và liên kết định danh tổ chức W3C DID.'
+      },
+      hash: {
+        ratioX: 0.36,
+        ratioY: 0.78,
+        zoom: 2.50,
+        modeTag: 'CHẾ ĐỘ: KIỂM TRA CHUỖI BĂM MẬT MÃ SHA-256',
+        opticSpec: 'GIẢI MÃ SHA-256 256-BIT • LIÊN KẾT CÂY MERKLE GỐC K2020',
+        title: 'CHẾ ĐỘ 04: KHÓA ĐỊNH DANH & MÃ BĂM BẢO NGUYÊN SHA-256',
+        desc: 'Bản in mã băm 256-bit độc bản của hồ sơ sinh viên, đối soát với cây Merkle của nhà trường để phát hiện sửa đổi tức thì.'
+      }
+    };
+
+    window.viewKeys = ['overview', 'guilloche', 'seal', 'hash'];
+    window.currentViewIndex = 0;
+    window.currentActiveKey = 'overview';
+
+    function updateHudZoomDisplay(val) {
+      if (zoomIndicator) {
+        zoomIndicator.innerText = `ĐỘ PHÓNG ĐẠI: ${val.toFixed(2)}x (${Math.round(val * 100)}%)`;
+      }
+      if (zoomSlider) {
+        zoomSlider.value = val;
+      }
+      if (sliderBadge) {
+        sliderBadge.innerText = val.toFixed(1) + 'x';
       }
     }
-  }
 
-  function stepCamera(direction) {
-    let nextIndex = currentViewIndex + direction;
-    if (nextIndex < 0) nextIndex = viewKeys.length - 1;
-    if (nextIndex >= viewKeys.length) nextIndex = 0;
-    const nextKey = viewKeys[nextIndex];
-    setCameraView(nextKey);
-  }
+    // Cập nhật vị trí kính lúp và nội dung quang học bên trong
+    function updateLoupe(x, y, zoomVal) {
+      if (!subject || !loupeRig || !zoomedTarget) return;
+
+      const subRect = subject.getBoundingClientRect();
+      const frameRect = frame.getBoundingClientRect();
+
+      // Giới hạn trong phạm vi văn bằng
+      const clampedX = Math.max(0, Math.min(x, subRect.width));
+      const clampedY = Math.max(0, Math.min(y, subRect.height));
+
+      // Tọa độ tâm kính lúp tương đối với container camera-frame
+      const frameX = (subRect.left - frameRect.left) + clampedX;
+      const frameY = (subRect.top - frameRect.top) + clampedY;
+
+      // Đặt vị trí kính lúp sao cho tâm tròng kính trùng đúng với điểm soi (frameX, frameY)
+      loupeRig.style.transform = `translate3d(${frameX - lensCenterOffsetX}px, ${frameY - lensCenterOffsetY}px, 0)`;
+
+      // Phóng to nội dung nhân bản bên trong tròng kính
+      const cloneEl = document.getElementById('diploma-subject-clone');
+      if (cloneEl) {
+        cloneEl.style.width = subRect.width + 'px';
+        cloneEl.style.height = subRect.height + 'px';
+      }
+
+      // Dịch chuyển nội dung phóng to sao cho điểm (clampedX, clampedY) nằm ngay chính giữa tròng kính (lensRadius)
+      const transX = -(clampedX * zoomVal) + lensRadius;
+      const transY = -(clampedY * zoomVal) + lensRadius;
+      zoomedTarget.style.transform = `translate3d(${transX}px, ${transY}px, 0) scale(${zoomVal})`;
+
+      // Cập nhật HUD tọa độ hiển thị
+      if (coordIndicator) {
+        coordIndicator.innerText = `TỌA ĐỘ: [X: ${Math.round(clampedX)} | Y: ${Math.round(clampedY)}]`;
+      }
+    }
+
+    // Animation Loop render 60fps mượt mà
+    function renderLoop() {
+      const factor = isMouseActive ? 0.35 : 0.08;
+      curX += (targetX - curX) * factor;
+      curY += (targetY - curY) * factor;
+
+      updateLoupe(curX, curY, zoomLevel);
+
+      animFrameId = requestAnimationFrame(renderLoop);
+    }
+    renderLoop();
+
+    // Rê chuột tự do trên văn bằng
+    subject.addEventListener('mousemove', function(e) {
+      isMouseActive = true;
+      const rect = subject.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+    });
+
+    subject.addEventListener('mouseenter', function(e) {
+      isMouseActive = true;
+      loupeRig.style.opacity = '1';
+    });
+
+    // Điều khiển zoom thủ công bằng nút chọn tỉ lệ (1.5x, 2.5x, 3.2x, 4.0x)
+    window.setManualZoom = function(val, btn) {
+      zoomLevel = parseFloat(val);
+      updateHudZoomDisplay(zoomLevel);
+      document.querySelectorAll('.zoom-ratio-btn').forEach(b => {
+        b.classList.remove('bg-academic-navy', 'text-white', 'shadow-xs');
+        b.classList.add('text-ink-muted');
+      });
+      if (btn) {
+        btn.classList.add('bg-academic-navy', 'text-white', 'shadow-xs');
+        btn.classList.remove('text-ink-muted');
+      }
+    };
+
+    window.onSliderZoomChange = function(val) {
+      zoomLevel = parseFloat(val);
+      updateHudZoomDisplay(zoomLevel);
+    };
+
+    // Hàm chuyển góc nhìn chuẩn theo mốc bảo an (Preset view switch)
+    window.setCameraView = function(viewKey, clickedBtn) {
+      const preset = PRESETS[viewKey];
+      if (!preset || !subject) return;
+
+      window.currentActiveKey = viewKey;
+      window.currentViewIndex = window.viewKeys.indexOf(viewKey);
+      isMouseActive = false;
+
+      const rect = subject.getBoundingClientRect();
+      targetX = rect.width * preset.ratioX;
+      targetY = rect.height * preset.ratioY;
+      zoomLevel = preset.zoom;
+
+      updateHudZoomDisplay(zoomLevel);
+      if (modeTag) modeTag.innerText = preset.modeTag;
+      if (opticSpec) opticSpec.innerText = preset.opticSpec;
+      if (titleEl) titleEl.innerText = preset.title;
+      if (descEl) descEl.innerText = preset.desc;
+
+      // Cập nhật trạng thái nút
+      document.querySelectorAll('.camera-btn').forEach(btn => {
+        btn.classList.remove('bg-academic-navy', 'text-white', 'font-semibold');
+        btn.classList.add('text-ink-muted', 'font-medium');
+      });
+
+      if (clickedBtn) {
+        clickedBtn.classList.add('bg-academic-navy', 'text-white', 'font-semibold');
+        clickedBtn.classList.remove('text-ink-muted', 'font-medium');
+      } else {
+        const btn = document.querySelector(`.camera-btn[data-view="${viewKey}"]`);
+        if (btn) {
+          btn.classList.add('bg-academic-navy', 'text-white', 'font-semibold');
+          btn.classList.remove('text-ink-muted', 'font-medium');
+        }
+      }
+    };
+
+    window.stepCamera = function(direction) {
+      let nextIndex = window.currentViewIndex + direction;
+      if (nextIndex < 0) nextIndex = window.viewKeys.length - 1;
+      if (nextIndex >= window.viewKeys.length) nextIndex = 0;
+      const nextKey = window.viewKeys[nextIndex];
+      window.setCameraView(nextKey);
+    };
+
+    // Khởi tạo vị trí ban đầu
+    setTimeout(() => {
+      syncZoomClone();
+      window.setCameraView('overview');
+      if (subject) {
+        const rect = subject.getBoundingClientRect();
+        curX = rect.width * 0.50;
+        curY = rect.height * 0.44;
+        targetX = curX;
+        targetY = curY;
+      }
+    }, 150);
+
+    // Tự động đồng bộ lại kích thước clone khi resize
+    window.addEventListener('resize', () => {
+      syncZoomClone();
+      if (subject) {
+        const rect = subject.getBoundingClientRect();
+        const preset = PRESETS[window.currentActiveKey] || PRESETS.overview;
+        targetX = rect.width * preset.ratioX;
+        targetY = rect.height * preset.ratioY;
+      }
+    });
+  })();
 </script>
-
-
-
-
+</main>
 
 
 </body></html>
