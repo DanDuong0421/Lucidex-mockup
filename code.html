@@ -1,0 +1,1109 @@
+<!DOCTYPE html><html lang="vi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Lucidex - Nền tảng xác thực văn bằng đại học pháp định</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-clean': '#FFFFFF',
+            'surface-light': '#F8FAFC',
+            'surface-blue': '#F0F4F8',
+            'academic-navy': '#002045',
+            'academic-blue': '#1A365D',
+            'trust-blue': '#006398',
+            'trust-accent': '#1D4ED8',
+            'ink': '#0F172A',
+            'ink-muted': '#334155',
+            'rule': '#E2E8F0',
+            'rule-blue': '#CBD5E1',
+            'seal': '#A6302A',
+            'midnight': '#0B132B',
+            'midnight-card': '#111C3A',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          borderRadius: {
+            'doc': '3px',
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    :root {
+      --bg-clean: #FFFFFF;
+      --surface-light: #F8FAFC;
+      --academic-navy: #002045;
+      --academic-blue: #1A365D;
+      --trust-blue: #006398;
+      --ink: #0F172A;
+      --rule: #E2E8F0;
+      --seal: #A6302A;
+      --midnight: #0B132B;
+    }
+    html, body {
+      background-color: #FFFFFF;
+      color: #0F172A;
+      margin: 0;
+      padding: 0;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection {
+      background-color: #D6E3FF;
+      color: #002045;
+    }
+    /* Sắc nét, trang nghiêm với shadow xanh học thuật tinh tế */
+    .shadow-diploma {
+      box-shadow: 
+        0 1px 3px rgba(15, 23, 42, 0.04),
+        0 6px 16px -2px rgba(15, 23, 42, 0.06),
+        0 20px 40px -6px rgba(0, 32, 69, 0.08);
+    }
+    .shadow-navy {
+      box-shadow: 0 10px 25px -5px rgba(0, 32, 69, 0.12), 0 8px 10px -6px rgba(0, 32, 69, 0.06);
+    }
+    /* Camera lens viewer canvas transition with cubic-bezier */
+    .camera-target {
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-origin: center center;
+    }
+    /* Academic trust subtle geometric lattice */
+    .academic-grid-bg {
+      background-color: #FFFFFF;
+      background-image: radial-gradient(#0F4C81 0.5px, transparent 0.5px);
+      background-size: 28px 28px;
+      background-position: 0 0;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-white text-ink min-h-screen flex flex-col selection:bg-blue-100 selection:text-academic-navy">
+<!-- CỐ ĐỊNH NAV (TRẮNG TINH KHÔI, ĐƯỜNG KẺ BLUE-SLATE) -->
+<header class="fixed top-0 left-0 right-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-rule shadow-xs">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between"><div class="flex items-center gap-4"><a class="flex items-center gap-3 group" href="#"><img alt="Lucidex Logo" class="h-6 w-auto object-contain brightness-95 contrast-125 transition-transform group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-cc_onCtySqMRWCMjjCL6rAUC84oYilCBW1OUqRKTpvE2auVw30qxF4r15AoiyJpAL6pp6tpbW4gp0zS5gCxc8dEhPVymi_0j9RrTbWjWse5OLVe68wUJZhe8bdAZH8fiRgMuN9IPGYucRYqbg43nzfva-6R9oq8ppM-ngbxn0JvebpsD_1yiaN5UJb9EnQz6Qyhx86Aw6gIEP3hQG7-QrXfpsG5qOVfOd-d6G4U0R7dB_wjytzjoR1FoICtPAZMmvg"></a></div><nav class="hidden md:flex items-center gap-1.5 text-xs text-ink-muted p-1 bg-surface-light/70 border border-rule rounded-full shadow-xs font-sans"><a class="px-3.5 py-1.5 rounded-full bg-academic-navy text-white font-sans text-xs font-semibold shadow-xs transition-all" href="#canh-1">Tấm bằng</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-camera">Zoom văn bằng</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-2">Con dấu &amp; Quy chuẩn</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-3">Chuỗi 3 bên</a><a class="px-3.5 py-1.5 rounded-full font-sans text-xs text-ink-muted hover:text-academic-navy hover:bg-white transition-all font-medium" href="#canh-4">Nhật ký thẩm định</a></nav><div class="flex items-center gap-3"><a class="inline-flex items-center justify-center font-sans text-xs font-semibold px-4 py-2 rounded-full bg-academic-navy text-white hover:bg-academic-blue hover:shadow-navy transition-all shadow-sm gap-1.5" href="#canh-camera"><svg class="w-3.5 h-3.5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"></circle><path d="M20 20L16 16" stroke-linecap="round" stroke-width="2"></path></svg><span class="">Tra cứu chi tiết</span></a></div></div>
+</header>
+<main class="w-full pt-16 flex-1 overflow-x-hidden">
+<!-- CẢNH 1: TẤM BẰNG (TRẮNG - XANH NAVY - ĐEN) -->
+<section class="relative w-full min-h-[88vh] flex items-center border-b border-rule py-16 lg:py-20 academic-grid-bg" id="canh-1">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Cột 2 đến 6: Nội dung chính lề trái -->
+<div class="lg:col-start-2 lg:col-span-5 flex flex-col items-start z-10">
+
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-[54px] text-ink leading-[1.15] tracking-tight mb-6 font-bold">Xác thực và <span class="text-academic-blue font-serif font-bold">bảo chứng tức thì</span><br class="hidden sm:inline"> mọi văn bằng &amp; chứng chỉ.</h1>
+<p class="font-sans text-base lg:text-[16.5px] text-ink-muted leading-relaxed max-w-[480px] mb-8"><strong class="font-bold text-academic-navy">Lucidex</strong> thay thế quy trình công chứng và xác minh thủ công kéo dài hàng tuần bằng hạ tầng mật mã W3C DID bất biến. Thẩm định nguồn gốc văn bằng, bảng điểm và chứng chỉ đào tạo trong 3 giây.</p>
+<!-- Nút chuyển đổi phong cách Xanh Đậm / Viền Slate -->
+<div class="flex flex-wrap items-center gap-4 justify-center">
+<a class="inline-flex items-center justify-center font-sans text-sm font-semibold px-7 py-3 rounded-full bg-academic-navy text-white hover:bg-academic-blue hover:shadow-navy transition-all" href="#canh-camera"><span class="">Khám phá ngay</span><svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+
+</div>
+<!-- Chi tiết phôi bằng công báo theo tông Xanh - Trắng - Đen -->
+<div class="mt-12 pt-6 border-t border-rule w-full flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-[11px] text-ink uppercase tracking-wider justify-center"><div class="">
+<span class="text-ink-muted/70 block text-[9.5px]">Thời gian đối soát tức thì</span>
+<span class="text-academic-navy font-bold">&lt; 1.5 GIÂY</span>
+</div>
+<div class="h-6 w-px bg-rule"></div>
+<div class="">
+<span class="text-ink-muted/70 block text-[9.5px]">Độ toàn vẹn mật mã</span>
+<span class="text-ink font-semibold">100% ON-CHAIN</span>
+</div>
+<div class="h-6 w-px bg-rule hidden sm:block"></div>
+<div class="">
+<span class="text-ink-muted/70 block text-[9.5px]">Tình trạng pháp lý</span>
+<span class="text-trust-blue font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Cấp phát trực tiếp từ tổ chức phát hành</span>
+</div></div>
+</div>
+<!-- Cột 7 đến 12: Tấm bằng bìa sang trọng mạ nhũ vàng kim & viền chuẩn xanh học thuật -->
+<div class="lg:col-span-6 relative mt-4 lg:mt-0 lg:translate-x-4"><div class="relative max-w-xl mx-auto lg:max-w-none">
+<!-- Header Navigation Tabs for Diploma Outer Covers -->
+<div class="flex items-center justify-between gap-2 mb-3 px-1">
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+<button class="cover-nav-tab px-3.5 py-1.5 rounded-full font-mono text-[11px] font-semibold tracking-wider transition-all bg-academic-navy text-white border border-academic-navy shadow-sm" id="cover-tab-0" onclick="switchCover(0)" type="button">
+        01. TIẾN SĨ
+      </button>
+<button class="cover-nav-tab px-3.5 py-1.5 rounded-full font-mono text-[11px] font-medium tracking-wider transition-all text-ink-muted hover:text-academic-navy bg-white border border-rule hover:border-blue-300" id="cover-tab-1" onclick="switchCover(1)" type="button">
+        02. THẠC SĨ
+      </button>
+<button class="cover-nav-tab px-3.5 py-1.5 rounded-full font-mono text-[11px] font-medium tracking-wider transition-all text-ink-muted hover:text-academic-navy bg-white border border-rule hover:border-blue-300" id="cover-tab-2" onclick="switchCover(2)" type="button">
+        03. CỬ NHÂN
+      </button>
+<button class="cover-nav-tab px-3.5 py-1.5 rounded-full font-mono text-[11px] font-medium tracking-wider transition-all text-ink-muted hover:text-academic-navy bg-white border border-rule hover:border-blue-300" id="cover-tab-3" onclick="switchCover(3)" type="button">
+        04. CHUYÊN GIA
+      </button>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="w-8 h-8 rounded-full border border-rule bg-white flex items-center justify-center hover:bg-academic-navy hover:text-white transition-colors text-xs font-mono shadow-xs" onclick="prevCover()" type="button">‹</button>
+<button class="w-8 h-8 rounded-full border border-rule bg-white flex items-center justify-center hover:bg-academic-navy hover:text-white transition-colors text-xs font-mono shadow-xs" onclick="nextCover()" type="button">›</button>
+</div>
+</div>
+<!-- Main Outer Cover Showcase Card Container -->
+<div class="relative rounded-doc p-2.5 bg-gradient-to-b from-white via-surface-light to-surface-blue border border-rule-blue shadow-diploma">
+<!-- COVER 0: BẰNG TIẾN SĨ (BURGUNDY / ĐỎ ĐÔ SẪM DA HẠT MẠ VÀNG KIM) -->
+<div class="diploma-cover-item relative w-full h-[450px] sm:h-[480px] rounded-doc overflow-hidden shadow-2xl transition-all duration-500 block" id="diploma-cover-0" style="background: radial-gradient(circle at 50% 35%, #42080c 0%, #290306 70%, #150103 100%); box-shadow: inset 0 0 100px rgba(0,0,0,0.85), 0 25px 50px -12px rgba(15,23,42,0.5);">
+<!-- Spine Fold Crease Simulation -->
+<div class="absolute left-6 top-0 bottom-0 w-2.5 bg-gradient-to-r from-black/50 via-white/10 to-transparent pointer-events-none z-20"></div>
+<div class="absolute left-7 top-0 bottom-0 w-px bg-white/15 pointer-events-none z-20"></div>
+<!-- Corner Gold Protectors -->
+<div class="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<!-- Outer Gilded Double Border -->
+<div class="absolute inset-4 sm:inset-5 border border-[#D4AF37]/50 rounded-doc pointer-events-none flex flex-col justify-between p-6 z-10">
+<div class="border border-[#D4AF37]/30 inset-1 absolute pointer-events-none"></div>
+<!-- Top: Quốc hiệu nhũ vàng kim -->
+<div class="text-center mt-3">
+<p class="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-medium" style="background: linear-gradient(135deg, #FFF6D0 0%, #F5D77F 40%, #B8860B 80%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+          </p>
+<p class="font-sans text-[11px] sm:text-xs tracking-wider mt-1" style="background: linear-gradient(135deg, #FFF6D0 0%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Độc lập - Tự do - Hạnh phúc
+          </p>
+<div class="w-16 h-px mx-auto my-2 bg-gradient-to-r from-transparent via-[#F5D77F] to-transparent"></div>
+</div>
+<!-- Center: Quốc huy dập nổi & Tên văn bằng tiến sĩ -->
+<div class="text-center my-auto flex flex-col items-center justify-center">
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#ECC968]/70 flex items-center justify-center mb-4 p-2 shadow-inner bg-gradient-to-br from-[#ECC968]/15 via-transparent to-black/40">
+<svg class="w-10 h-10 sm:w-12 sm:h-12 text-[#F5D77F] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-dasharray="1 1"></circle>
+<path d="M12 4 L14 9 L19 9 L15 13 L17 18 L12 15 L7 18 L9 13 L5 9 L10 9 Z" fill="currentColor" fill-opacity="0.75"></path>
+</svg>
+</div>
+<h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider mb-1" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFDF73 30%, #D4AF37 70%, #AA7C11 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));">
+            BẰNG TIẾN SĨ
+          </h2>
+<p class="font-serif italic text-xs sm:text-sm tracking-widest uppercase opacity-90" style="color: #ECC968;">
+            DOCTOR DEGREE
+          </p>
+</div>
+<!-- Bottom: Mã kiểm chứng W3C bảo mật -->
+<div class="flex items-end justify-between font-mono text-[9px] sm:text-[10px] text-[#ECC968]/80 border-t border-[#D4AF37]/30 pt-3">
+<div>
+<span class="block text-white/50 text-[8px] uppercase tracking-wider">MÃ VĂN BẰNG PHÁP ĐỊNH</span>
+<span class="font-semibold text-white/90">PHD-VN/2024-00188</span>
+</div>
+<div class="text-right flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F5D77F] animate-pulse"></span>
+<span class="font-semibold text-[#F5D77F] tracking-wide">COTTON BINDING • W3C VC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COVER 1: BẰNG THẠC SĨ (ROYAL NAVY / XANH LAM HOÀNG GIA DẬP VÀNG KIM) -->
+<div class="diploma-cover-item relative w-full h-[450px] sm:h-[480px] rounded-doc overflow-hidden shadow-2xl transition-all duration-500 hidden" id="diploma-cover-1" style="background: radial-gradient(circle at 50% 35%, #0B2545 0%, #061528 70%, #020812 100%); box-shadow: inset 0 0 100px rgba(0,0,0,0.85), 0 25px 50px -12px rgba(8,23,40,0.6);">
+<div class="absolute left-6 top-0 bottom-0 w-2.5 bg-gradient-to-r from-black/50 via-white/10 to-transparent pointer-events-none z-20"></div>
+<div class="absolute left-7 top-0 bottom-0 w-px bg-white/15 pointer-events-none z-20"></div>
+<div class="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute inset-4 sm:inset-5 border border-[#D4AF37]/50 rounded-doc pointer-events-none flex flex-col justify-between p-6 z-10">
+<div class="border border-[#D4AF37]/30 inset-1 absolute pointer-events-none"></div>
+<div class="text-center mt-3">
+<p class="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-medium" style="background: linear-gradient(135deg, #FFF6D0 0%, #F5D77F 40%, #B8860B 80%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+          </p>
+<p class="font-sans text-[11px] sm:text-xs tracking-wider mt-1" style="background: linear-gradient(135deg, #FFF6D0 0%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Độc lập - Tự do - Hạnh phúc
+          </p>
+<div class="w-16 h-px mx-auto my-2 bg-gradient-to-r from-transparent via-[#F5D77F] to-transparent"></div>
+</div>
+<div class="text-center my-auto flex flex-col items-center justify-center">
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#ECC968]/70 flex items-center justify-center mb-4 p-2 bg-gradient-to-br from-[#ECC968]/15 via-transparent to-black/40">
+<svg class="w-10 h-10 sm:w-12 sm:h-12 text-[#F5D77F] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+<polygon fill="currentColor" fill-opacity="0.75" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+</div>
+<h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider mb-1" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFDF73 30%, #D4AF37 70%, #AA7C11 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));">
+            BẰNG THẠC SĨ
+          </h2>
+<p class="font-serif italic text-xs sm:text-sm tracking-widest uppercase opacity-90" style="color: #ECC968;">
+            MASTER DEGREE
+          </p>
+</div>
+<div class="flex items-end justify-between font-mono text-[9px] sm:text-[10px] text-[#ECC968]/80 border-t border-[#D4AF37]/30 pt-3">
+<div>
+<span class="block text-white/50 text-[8px] uppercase tracking-wider">MÃ VĂN BẰNG THẠC SĨ</span>
+<span class="font-semibold text-white/90">MST-VN/2024-04921</span>
+</div>
+<div class="text-right flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F5D77F] animate-pulse"></span>
+<span class="font-semibold text-[#F5D77F] tracking-wide">ROYAL NAVY BINDING</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COVER 2: BẰNG CỬ NHÂN (ACADEMIC MIDNIGHT SAPPHIRE / XANH SAPPHIRE QUỐC TẾ MẠ VÀNG KIM) -->
+<div class="diploma-cover-item relative w-full h-[450px] sm:h-[480px] rounded-doc overflow-hidden shadow-2xl transition-all duration-500 hidden" id="diploma-cover-2" style="background: radial-gradient(circle at 50% 35%, #102A45 0%, #0A192B 70%, #040A12 100%); box-shadow: inset 0 0 100px rgba(0,0,0,0.85), 0 25px 50px -12px rgba(10,25,43,0.6);">
+<div class="absolute left-6 top-0 bottom-0 w-2.5 bg-gradient-to-r from-black/50 via-white/10 to-transparent pointer-events-none z-20"></div>
+<div class="absolute left-7 top-0 bottom-0 w-px bg-white/15 pointer-events-none z-20"></div>
+<div class="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute inset-4 sm:inset-5 border border-[#D4AF37]/50 rounded-doc pointer-events-none flex flex-col justify-between p-6 z-10">
+<div class="border border-[#D4AF37]/30 inset-1 absolute pointer-events-none"></div>
+<div class="text-center mt-3">
+<p class="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-medium" style="background: linear-gradient(135deg, #FFF6D0 0%, #F5D77F 40%, #B8860B 80%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+          </p>
+<p class="font-sans text-[11px] sm:text-xs tracking-wider mt-1" style="background: linear-gradient(135deg, #FFF6D0 0%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Độc lập - Tự do - Hạnh phúc
+          </p>
+<div class="w-16 h-px mx-auto my-2 bg-gradient-to-r from-transparent via-[#F5D77F] to-transparent"></div>
+</div>
+<div class="text-center my-auto flex flex-col items-center justify-center">
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#ECC968]/70 flex items-center justify-center mb-4 p-2 bg-gradient-to-br from-[#ECC968]/15 via-transparent to-black/40">
+<svg class="w-10 h-10 sm:w-12 sm:h-12 text-[#F5D77F] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9" stroke="currentColor"></circle>
+<path d="M8 12 L11 15 L16 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider mb-1" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFDF73 30%, #D4AF37 70%, #AA7C11 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));">
+            BẰNG CỬ NHÂN
+          </h2>
+<p class="font-serif italic text-xs sm:text-sm tracking-widest uppercase opacity-90" style="color: #ECC968;">
+            THE DEGREE OF BACHELOR
+          </p>
+</div>
+<div class="flex items-end justify-between font-mono text-[9px] sm:text-[10px] text-[#ECC968]/80 border-t border-[#D4AF37]/30 pt-3">
+<div>
+<span class="block text-white/50 text-[8px] uppercase tracking-wider">SỐ VÀO SỔ CẤP BẰNG</span>
+<span class="font-semibold text-white/90">DHQG-HCM/2024/0912</span>
+</div>
+<div class="text-right flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F5D77F] animate-pulse"></span>
+<span class="font-semibold text-[#F5D77F] tracking-wide">ACADEMIC BLUE LEATHER</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COVER 3: CHỨNG CHỈ HÀNH NGHỀ CAO CẤP (FOREST EMERALD / LỤC BẢO DẬP NHŨ BẠC VÀNG) -->
+<div class="diploma-cover-item relative w-full h-[450px] sm:h-[480px] rounded-doc overflow-hidden shadow-2xl transition-all duration-500 hidden" id="diploma-cover-3" style="background: radial-gradient(circle at 50% 35%, #0B3322 0%, #051E14 70%, #020E0A 100%); box-shadow: inset 0 0 100px rgba(0,0,0,0.85), 0 25px 50px -12px rgba(5,30,20,0.6);">
+<div class="absolute left-6 top-0 bottom-0 w-2.5 bg-gradient-to-r from-black/50 via-white/10 to-transparent pointer-events-none z-20"></div>
+<div class="absolute left-7 top-0 bottom-0 w-px bg-white/15 pointer-events-none z-20"></div>
+<div class="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#D4AF37] pointer-events-none z-20"></div>
+<div class="absolute inset-4 sm:inset-5 border border-[#D4AF37]/50 rounded-doc pointer-events-none flex flex-col justify-between p-6 z-10">
+<div class="border border-[#D4AF37]/30 inset-1 absolute pointer-events-none"></div>
+<div class="text-center mt-3">
+<p class="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-medium" style="background: linear-gradient(135deg, #FFF6D0 0%, #F5D77F 40%, #B8860B 80%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+          </p>
+<p class="font-sans text-[11px] sm:text-xs tracking-wider mt-1" style="background: linear-gradient(135deg, #FFF6D0 0%, #ECC968 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Độc lập - Tự do - Hạnh phúc
+          </p>
+<div class="w-16 h-px mx-auto my-2 bg-gradient-to-r from-transparent via-[#F5D77F] to-transparent"></div>
+</div>
+<div class="text-center my-auto flex flex-col items-center justify-center">
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#ECC968]/70 flex items-center justify-center mb-4 p-2 bg-gradient-to-br from-[#ECC968]/15 via-transparent to-black/40">
+<svg class="w-10 h-10 sm:w-12 sm:h-12 text-[#F5D77F] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+<path d="M12 2 L2 7 L12 12 L22 7 Z" fill="currentColor" fill-opacity="0.7"></path>
+<path d="M2 17 L12 22 L22 17"></path>
+<path d="M2 12 L12 17 L22 12"></path>
+</svg>
+</div>
+<h2 class="font-serif text-xl sm:text-2xl font-bold tracking-wider mb-1 text-center px-4" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFDF73 30%, #D4AF37 70%, #AA7C11 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));">
+            CHỨNG CHỈ QUỐC GIA
+          </h2>
+<p class="font-serif italic text-xs sm:text-sm tracking-widest uppercase opacity-90" style="color: #ECC968;">
+            EXECUTIVE &amp; SPECIALIST CREDENTIAL
+          </p>
+</div>
+<div class="flex items-end justify-between font-mono text-[9px] sm:text-[10px] text-[#ECC968]/80 border-t border-[#D4AF37]/30 pt-3">
+<div>
+<span class="block text-white/50 text-[8px] uppercase tracking-wider">SỐ HIỆU CHỨNG THỰC</span>
+<span class="font-semibold text-white/90">CC-QG/2024-88301</span>
+</div>
+<div class="text-right flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F5D77F] animate-pulse"></span>
+<span class="font-semibold text-[#F5D77F] tracking-wide">EMERALD ARCHIVAL</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Bar: Badge & Jump to Zoom Action -->
+<div class="mt-3 flex items-center justify-between text-ink-muted font-mono text-xs px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-academic-blue"></span>
+
+</div>
+<a class="text-[11px] text-academic-blue font-semibold hover:underline flex items-center gap-1" href="#canh-camera">
+<span class="">Lật mở ruột bằng &amp; soi kính</span>
+<span class="">↓</span>
+</a>
+</div>
+</div>
+<script>
+  let activeCoverIndex = 0;
+  const totalCovers = 4;
+
+  function switchCover(index) {
+    activeCoverIndex = index;
+    for (let i = 0; i < totalCovers; i++) {
+      const coverEl = document.getElementById('diploma-cover-' + i);
+      const tabEl = document.getElementById('cover-tab-' + i);
+      if (coverEl) {
+        if (i === index) {
+          coverEl.classList.remove('hidden');
+          coverEl.classList.add('block');
+        } else {
+          coverEl.classList.add('hidden');
+          coverEl.classList.remove('block');
+        }
+      }
+      if (tabEl) {
+        if (i === index) {
+          tabEl.classList.remove('text-ink-muted', 'bg-white', 'border-rule', 'font-medium');
+          tabEl.classList.add('bg-academic-navy', 'text-white', 'border-academic-navy', 'font-semibold', 'shadow-sm');
+        } else {
+          tabEl.classList.add('text-ink-muted', 'bg-white', 'border-rule', 'font-medium');
+          tabEl.classList.remove('bg-academic-navy', 'text-white', 'border-academic-navy', 'font-semibold', 'shadow-sm');
+        }
+      }
+    }
+  }
+
+  function nextCover() {
+    let nextIdx = (activeCoverIndex + 1) % totalCovers;
+    switchCover(nextIdx);
+  }
+
+  function prevCover() {
+    let prevIdx = (activeCoverIndex - 1 + totalCovers) % totalCovers;
+    switchCover(prevIdx);
+  }
+</script></div>
+</div>
+</div>
+</section>
+<!-- TÍNH NĂNG: HÀNH TRÌNH CAMERA ZOOM VĂN BẰNG (NỀN XANH XÁM NHẸ #F8FAFC & TRẮNG TINH KHIẾT) -->
+<section class="w-full border-b border-rule bg-surface-light" id="canh-camera"><div class="w-full px-4 sm:px-8 lg:px-12 py-12 lg:py-16">
+<!-- Header Section for Camera Journey -->
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-end">
+<div class="lg:col-span-8">
+
+<h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold tracking-tight mb-2">
+        Kính vi mô kiểm định bảo an đa tầng.
+      </h2>
+<p class="font-sans text-sm lg:text-base text-ink-muted leading-relaxed max-w-3xl">
+        Điều khiển thấu kính quang học di chuyển qua 4 lớp bảo chứng pháp định: từ tổng quan phôi bằng trắng tinh, hoa văn an ninh guilloche, con dấu số W3C DID dập mực bảo an đến mã băm mật mã SHA-256 đối soát tức thì.
+      </p>
+</div>
+<!-- Quick Stats & Manual Controls -->
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-3 font-mono">
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-full border border-rule hover:border-academic-blue bg-white font-mono text-xs text-ink transition-all flex items-center gap-1 shadow-xs hover:text-academic-blue" onclick="stepCamera(-1)" type="button">
+<span class="">‹ Trước</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-full border border-rule hover:border-academic-blue bg-white font-mono text-xs text-ink transition-all flex items-center gap-1 shadow-xs hover:text-academic-blue" onclick="stepCamera(1)" type="button">
+<span class="">Tiếp theo ›</span>
+</button>
+</div>
+<div class="text-[10.5px] text-ink-muted/80 uppercase tracking-wider font-semibold">
+        ỐNG KÍNH QUANG HỌC MACRO 4K • TỰ ĐỘNG CÂN CHỈNH
+      </div>
+</div>
+</div>
+<!-- Camera Journey Interactive Timeline Milestones -->
+<div class="max-w-7xl mx-auto mb-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 p-1.5 bg-white border border-rule-blue rounded-doc shadow-sm">
+<button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent bg-academic-navy text-white font-semibold" data-view="overview" onclick="setCameraView('overview', this)" type="button">
+<span class="block text-[9px] text-blue-200 tracking-widest uppercase font-bold">MỐC 01</span>
+<span class="block text-[11px] truncate mt-0.5">Toàn cảnh văn bằng</span>
+</button>
+<button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent text-ink-muted font-medium hover:bg-surface-blue" data-view="guilloche" onclick="setCameraView('guilloche', this)" type="button">
+<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 02 (x2.5)</span>
+<span class="block text-[11px] truncate mt-0.5">Hoa văn Guilloche</span>
+</button>
+<button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent text-ink-muted font-medium hover:bg-surface-blue" data-view="seal" onclick="setCameraView('seal', this)" type="button">
+<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 03 (x2.8)</span>
+<span class="block text-[11px] truncate mt-0.5">Dấu số &amp; Chữ ký</span>
+</button>
+<button class="camera-btn px-3 py-2.5 rounded-doc font-mono text-xs tracking-wider transition-all text-left border border-transparent text-ink-muted font-medium hover:bg-surface-blue" data-view="hash" onclick="setCameraView('hash', this)" type="button">
+<span class="block text-[9px] text-ink-muted/70 tracking-widest uppercase font-bold">MỐC 04 (x2.2)</span>
+<span class="block text-[11px] truncate mt-0.5">Mã băm SHA-256</span>
+</button>
+</div>
+</div>
+<!-- Full-Width Viewport Camera chuyên biệt -->
+<div class="w-full">
+<div class="relative bg-white border border-rule-blue overflow-hidden shadow-diploma rounded-doc w-full">
+<!-- Khung kính ngắm chính với mặt bằng chi tiết di chuyển -->
+<div class="relative h-[560px] sm:h-[640px] lg:h-[680px] w-full overflow-hidden bg-slate-100/70 flex items-center justify-center p-6 select-none cursor-grab active:cursor-grabbing" id="camera-frame">
+<!-- Viewfinder Corner Optics Guides -->
+<div class="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-academic-navy/70 pointer-events-none z-30"></div>
+<div class="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-academic-navy/70 pointer-events-none z-30"></div>
+<div class="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-academic-navy/70 pointer-events-none z-30"></div>
+<div class="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-academic-navy/70 pointer-events-none z-30"></div>
+<!-- Lưới tọa độ Reticle chìm mô phỏng kính hiển vi quang học -->
+<div class="absolute inset-0 pointer-events-none z-20 opacity-30 flex items-center justify-center">
+<div class="w-full h-px bg-blue-300"></div>
+<div class="h-full w-px bg-blue-300 absolute"></div>
+<div class="w-48 h-48 rounded-full border border-academic-blue/40 absolute"></div>
+<div class="w-24 h-24 rounded-full border border-dashed border-academic-blue/30 absolute"></div>
+<div class="w-10 h-10 border border-trust-accent/50 absolute"></div>
+</div>
+<!-- VĂN BẰNG ĐẦY ĐỦ TRONG KHUNG ỐNG KÍNH (NỀN TRẮNG SẠCH SẼ, VIỀN XANH HỌC THUẬT) -->
+<div class="camera-target bg-white border-2 border-rule-blue p-8 rounded-doc shadow-md relative w-full" id="diploma-subject" style="transform: scale(1) translate(0px, 0px);">
+<!-- Khung hoa văn viền góc -->
+<div class="border-[2px] border-blue-900/20 p-6 relative bg-white">
+<!-- Góc bảo an số hóa intaglio -->
+<div class="absolute top-2 left-2 px-2 py-1 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue">
+<span class="font-bold text-trust-blue">[ZONE 01]</span> GUILLOCHE_INCLUSION_AREA_NW
+            </div>
+<div class="absolute top-2 right-2 px-2 py-1 border border-blue-200 font-mono text-[8px] text-academic-blue bg-surface-blue">
+<span class="font-bold text-trust-blue">[ZONE 02]</span> COTTON_SECURITY_FIBER_NE
+            </div>
+<!-- Quốc hiệu -->
+<div class="text-center pb-5 border-b border-rule">
+<p class="font-mono text-[11px] tracking-[0.2em] text-ink-muted uppercase font-medium">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+<p class="font-sans text-xs font-semibold text-ink mt-1">Độc lập - Tự do - Hạnh phúc</p>
+<div class="w-20 h-px bg-rule-blue mx-auto my-3"></div>
+<h3 class="font-serif text-3xl text-academic-navy font-bold tracking-tight">BẰNG CỬ NHÂN</h3>
+<p class="font-serif italic text-xs text-ink-muted">THE DEGREE OF BACHELOR</p>
+</div>
+<!-- Thân bằng -->
+<div class="py-6 text-center">
+<p class="font-sans text-xs text-ink-muted uppercase tracking-wider">HIỆU TRƯỞNG TRƯỜNG ĐẠI HỌC BÁCH KHOA CẤP CHO</p>
+<p class="font-serif text-3xl font-bold text-ink my-2 tracking-tight">NGUYỄN VĂN HẢI</p>
+<p class="font-sans text-xs text-ink-muted leading-relaxed">
+                Sinh ngày 12 tháng 08 năm 2002 tại Thành phố Hồ Chí Minh<br>
+                Đã hoàn thành chương trình đào tạo chính quy khóa 2020 - 2024<br>
+                Ngành đào tạo: <strong class="font-semibold text-academic-navy">Khoa học Máy tính</strong> • Xếp loại tốt nghiệp: <strong class="font-semibold text-academic-navy">Xuất sắc</strong>
+</p>
+</div>
+<!-- Chân bằng: Mã băm & Con dấu số -->
+<div class="pt-5 border-t border-rule grid grid-cols-12 gap-4 items-end" id="diploma-footer-zone">
+<!-- Vùng băm mật mã: Nền xanh học thuật nhẹ -->
+<div class="col-span-7 font-mono p-3 bg-surface-blue border border-blue-200 relative rounded-doc" id="target-hash-box">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[9px] text-ink-muted uppercase font-semibold">SỐ VÀO SỔ CẤP BẰNG:</span>
+<span class="text-[11px] text-academic-navy font-bold">DHQG-HCM/2024/0912</span>
+</div>
+<div class="mt-1">
+<span class="text-[8.5px] text-ink-muted uppercase block">KHÓA BẢO NGUYÊN (SHA-256):</span>
+<span class="text-[10.5px] text-academic-blue font-mono break-all font-semibold select-all">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+</div>
+<div class="mt-2 pt-2 border-t border-blue-200/70 flex items-center justify-between text-[9px] text-ink">
+<span class="font-medium text-ink-muted">DID: did:lucidex:edu:vn:hcmut</span>
+<span class="text-trust-accent font-bold">● W3C VC V2.0 VALID</span>
+</div>
+</div>
+<!-- Vùng con dấu Lucidex vector SVG chính thức https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ -->
+<div class="col-span-5 flex flex-col items-center justify-center" id="target-seal-box">
+<div class="w-28 h-28 relative flex items-center justify-center p-0.5">
+<img alt="Con dấu số Lucidex" class="w-28 h-28 object-contain drop-shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ">
+</div>
+<span class="font-mono text-[9px] text-ink-muted mt-1 uppercase font-semibold">Con dấu số Lucidex dập mực đỏ</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<!-- CẢNH 3: CON DẤU & QUY CHUẨN (BẢNG ĐỐI CHỨNG THEME TRẮNG - XANH - ĐEN) -->
+<section class="w-full py-16 lg:py-24 border-b border-rule bg-white" id="canh-2">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Bảng đối chứng kiểu công báo không rườm rà (Cột 2 đến 6) -->
+<div class="lg:col-start-2 lg:col-span-5 order-2 lg:order-1">
+<div class="bg-surface-light rounded-doc border border-rule-blue p-6 lg:p-8 shadow-sm">
+<div class="pb-3 border-b border-rule flex items-center justify-between mb-6 font-mono text-[11px] tracking-wider text-ink-muted">
+<span class="font-bold text-academic-navy">BẢNG ĐỐI CHỨNG THẨM ĐỊNH</span>
+<span class="text-trust-accent font-bold">TÍNH TOÀN VẸN</span>
+</div>
+<div class="space-y-6">
+<!-- Hiện trạng: Bản scan 2D -->
+<div class="border-b border-rule pb-5">
+<div class="flex items-center justify-between mb-1.5">
+<h4 class="font-sans font-semibold text-sm text-ink">Bản scan / Giấy công chứng</h4>
+<span class="font-mono text-[11px] text-seal font-medium bg-red-50 px-2 py-0.5 rounded">Dễ sao chép</span>
+</div>
+<p class="font-sans text-xs text-ink-muted leading-relaxed">
+  Chỉ là tệp ảnh 2D hoặc bản photo, điểm ảnh con dấu có thể sao chép và sửa đổi trong vài phút bằng công cụ đồ họa thông thường.
+</p>
+</div>
+<!-- Bản chất toán học Lucidex -->
+<div class="pb-2">
+<div class="flex items-center justify-between mb-1.5">
+<h4 class="font-sans font-semibold text-sm text-academic-navy">Chữ ký Mật mã Lucidex</h4>
+<span class="font-mono text-[11px] font-bold text-trust-blue bg-blue-50 px-2 py-0.5 rounded">Toán học bảo an</span>
+</div>
+<p class="font-sans text-xs text-ink-muted leading-relaxed">
+  Gắn liền với cặp khóa tổ chức của Trường. Mọi thay đổi 1 ký tự sẽ làm hỏng hàm băm SHA-256 lập tức.
+</p>
+</div>
+</div>
+<!-- Chi tiết Con dấu số dập nổi sắc nét -->
+<div class="mt-6 pt-5 border-t border-rule flex items-center gap-4 bg-white p-3 rounded-doc border border-rule">
+<div class="w-16 h-16 shrink-0 flex items-center justify-center">
+<img alt="Con dấu số Lucidex" class="w-16 h-16 object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ">
+</div>
+<p class="font-sans text-[11.5px] text-ink-muted leading-normal">
+  Dấu mộc mực đỏ giữ nguyên giá trị nghi lễ và văn hóa truyền thống; mật mã W3C cung cấp thẩm định tức thì trên toàn cầu.
+</p>
+</div>
+</div>
+</div>
+<!-- Lời dẫn cô đọng -->
+<div class="lg:col-span-5 order-1 lg:order-2 flex flex-col items-start">
+<h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold leading-tight tracking-[-0.02em] mb-5">
+  Một con dấu đỏ không thể xác thực từ xa.
+</h2>
+<p class="font-sans text-base lg:text-[16.5px] text-ink-muted leading-relaxed mb-6">
+  Dấu mộc mực đỏ và chữ ký tay từng là đỉnh cao bảo an trong nền hành chính thế kỷ trước. Nhưng trước màn hình tuyển dụng cách xa hàng nghìn cây số, giấy tờ công chứng chỉ còn là hình chụp dễ làm giả.
+</p>
+<div class="inline-flex items-center gap-2 font-mono text-xs text-academic-navy bg-surface-blue px-3.5 py-2 rounded-doc border border-blue-200 shadow-xs"><span class="text-[10px] uppercase tracking-wider text-trust-blue font-bold">Khoảng cách thẩm định:</span><span class="font-semibold text-academic-navy">Toàn cầu tức thời (&lt; 3.0s)</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CẢNH 4: CHUYỂN ĐỔI (CHUỖI TƯƠNG TÁC BA BÊN KHÉP KÍN THEME XANH - TRẮNG - ĐEN) -->
+<section class="w-full py-16 lg:py-24 border-b border-rule bg-surface-light" id="canh-3">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+<div class="lg:col-start-2 lg:col-span-8">
+
+<h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold tracking-tight mb-3">
+  Chuỗi tương tác ba bên khép kín.
+</h2>
+<p class="font-sans text-base text-ink-muted max-w-2xl leading-relaxed">
+  Vân guilloche an ninh tách khỏi thớ giấy, tái cấu trúc thành bộ chứng chỉ định danh chuẩn W3C Verifiable Credentials có thể xác minh tức thì.
+</p>
+</div>
+</div>
+<!-- Sơ đồ dòng chảy tuyến tính chuẩn mực học thuật -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-rule-blue bg-white shadow-sm rounded-doc overflow-hidden">
+<!-- 01. Issuer -->
+<div class="lg:col-start-2 lg:col-span-3 p-6 lg:p-8 lg:border-r border-b lg:border-b-0 border-rule flex flex-col justify-between hover:bg-surface-light/70 transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono text-2xl font-bold text-slate-300">01</span>
+<span class="font-mono text-[10px] tracking-widest text-academic-blue font-bold uppercase px-2.5 py-0.5 border border-blue-200 bg-surface-blue rounded">ISSUER</span>
+</div>
+<h3 class="font-serif text-xl font-bold text-academic-navy mb-2">Cơ sở đào tạo</h3>
+<p class="font-sans text-xs text-ink-muted leading-relaxed">
+  Nhà trường ký số văn bằng bằng khóa định danh tổ chức ngay khi ban hành quyết định tốt nghiệp.
+</p>
+</div>
+<div class="mt-8 pt-3 border-t border-rule font-mono text-[10.5px] text-ink-muted">
+  Khóa ký: <span class="font-semibold text-academic-navy">Ed25519Signature2020</span>
+</div>
+</div>
+<!-- 02. Owner -->
+<div class="lg:col-span-4 p-6 lg:p-8 lg:border-r border-b lg:border-b-0 border-rule bg-surface-blue/40 flex flex-col justify-between hover:bg-surface-blue/60 transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono text-2xl font-bold text-slate-300">02</span>
+<span class="font-mono text-[10px] tracking-widest text-trust-blue font-bold uppercase px-2.5 py-0.5 border border-blue-200 bg-white rounded">OWNER</span>
+</div>
+<h3 class="font-serif text-xl font-bold text-academic-navy mb-2">Người tốt nghiệp</h3>
+<p class="font-sans text-xs text-ink-muted leading-relaxed">
+  Cử nhân giữ văn bằng số trong ví mật mã cá nhân, toàn quyền cấp phép chia sẻ cho bên tuyển dụng.
+</p>
+</div>
+<div class="mt-8 pt-3 border-t border-rule font-mono text-[10.5px] text-ink-muted">
+  Quyền sở hữu: <span class="font-semibold text-academic-navy">Decoupled Identity</span>
+</div>
+</div>
+<!-- 03. Verifier -->
+<div class="lg:col-span-3 p-6 lg:p-8 flex flex-col justify-between hover:bg-surface-light/70 transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono text-2xl font-bold text-trust-accent">03</span>
+<span class="font-mono text-[10px] tracking-widest text-trust-accent font-bold uppercase px-2.5 py-0.5 border border-blue-300 bg-blue-50 rounded">VERIFIER</span>
+</div>
+<h3 class="font-serif text-xl font-bold text-academic-navy mb-2">Đơn vị tuyển dụng</h3>
+<p class="font-sans text-xs text-ink-muted leading-relaxed">
+  Doanh nghiệp kiểm chứng nguồn gốc toán học trong 3 giây, không cần gọi xác minh thủ công về trường.
+</p>
+</div>
+<div class="mt-8 pt-3 border-t border-rule font-mono text-[10.5px] text-trust-accent font-semibold">
+  Độ trễ đối soát: &lt; 3.0 giây
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 mt-6">
+<div class="lg:col-start-2 lg:col-span-10 text-right">
+<span class="font-mono text-[11px] text-academic-blue font-medium uppercase tracking-wider">Dữ liệu phân quyền độc quyền giữa 3 bên — Chỉ hiển thị theo quyền tương thích (W3C Selective Disclosure)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CẢNH 5: XÁC NHẬN (CẢNH TỐI: NỀN XANH ĐEN MIDNIGHT NAVY #0B132B SÂU THẲM) -->
+<section class="w-full bg-midnight text-white py-20 lg:py-28 border-b border-blue-900/40" id="canh-4">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10 items-end">
+<div class="lg:col-start-2 lg:col-span-7">
+<span class="font-mono text-[10.5px] uppercase tracking-[0.2em] text-blue-300 font-semibold block mb-2">
+  BẢN THẨM ĐỊNH MẬT MÃ TRỰC TUYẾN
+</span>
+<h2 class="font-serif text-3xl lg:text-4xl text-white font-semibold tracking-tight">
+  Thẩm định tính toàn vẹn bản ghi.
+</h2>
+</div>
+<div class="lg:col-span-3 flex items-center justify-start lg:justify-end">
+<!-- Dấu kiểm trạng thái mộc đỏ / xanh bảo an -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/50 border border-emerald-500/30 text-emerald-400 font-mono text-xs tracking-wide shadow-sm"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span class="font-medium text-emerald-300">ĐÃ KÝ SỐ MẬT MÃ</span><span class="text-emerald-500/50">•</span><span class="text-slate-300 font-medium">SEC-256K1</span></div>
+</div>
+</div>
+<!-- Terminal Console kỹ thuật cao cấp tông Midnight Navy -->
+<div class="lg:col-start-2 lg:col-span-10 mx-auto max-w-5xl bg-midnight-card border border-blue-900/50 rounded-doc p-6 lg:p-10 shadow-2xl">
+<!-- Hash & Timestamp Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-blue-900/50 gap-4 font-mono">
+<div>
+<span class="text-[9.5px] text-blue-300/80 block tracking-widest uppercase">DOCUMENT HASH (SHA-256)</span>
+<span class="text-xs text-cyan-300 break-all tracking-tight font-semibold">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+</div>
+<div class="sm:text-right shrink-0">
+<span class="text-[9.5px] text-blue-300/80 block tracking-widest uppercase">TIMESTAMP KHỐI</span>
+<span class="text-xs text-slate-200">2024-06-18T08:32:11+07:00</span>
+</div>
+</div>
+<!-- Kết luận giám định tự động -->
+<div class="py-8 border-b border-blue-900/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div>
+<span class="font-mono text-[10.5px] text-cyan-400 uppercase tracking-wider block mb-2 font-bold">
+  KẾT LUẬN GIÁM ĐỊNH TỰ ĐỘNG
+</span>
+<p class="font-serif text-xl lg:text-2xl text-white tracking-tight">
+  Văn bằng nguyên bản. Chữ ký hợp lệ. Chưa từng bị thu hồi.
+</p>
+</div>
+<div class="w-20 h-20 shrink-0 opacity-95 hidden sm:block">
+<img alt="Con dấu số Lucidex" class="w-20 h-20 object-contain drop-shadow" src="https://lh3.googleusercontent.com/aida/AEtjO1XUZahWV0WIw9iINIhaQjTLyAbWyYMU74IMCXkrkCs8xtlnC2WW-LQtcWH9sjdhD75di3Sf-N4Gtzuie9ll_uaxWFoPBe_e_ktYeu0Lckcl4LqstHo5l-VdJCIjTqgrInET8hM57-CNIRBQaP0Gpfl4FYkisUJQrtccExxFH1sFu6VrWKelhKPyzJ-r8ycEuTvNP_ns6t4mxankqcdScqIbhusqIZT42WSw07UGmzC3rc_Wy58BcOfW1rQ">
+</div>
+</div>
+<!-- Cryptographic Audit Trail -->
+<div class="pt-6 grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-[11px]">
+<div class="space-y-1">
+<span class="text-[9.5px] text-blue-300/70 block uppercase">DID TỔ CHỨC CẤP</span>
+<span class="text-cyan-300 break-all block font-semibold">did:lucidex:edu:vn:hcmut</span>
+<span class="font-sans text-[11px] text-slate-300 block mt-1">ĐH Bách Khoa - ĐHQG TP.HCM</span>
+</div>
+<div class="space-y-1">
+<span class="text-[9.5px] text-blue-300/70 block uppercase">MERKLE ROOT ACCUMULATOR</span>
+<span class="text-cyan-300 break-all block font-semibold">0x9b7a42ec7814a6015b63</span>
+<span class="font-sans text-[11px] text-slate-300 block mt-1">Gốc cây Merkle đợt K2020</span>
+</div>
+<div class="space-y-1">
+<span class="text-[9.5px] text-blue-300/70 block uppercase">TIÊU CHUẨN XÁC MINH</span>
+<span class="text-white block font-semibold">W3C VC Data Model v2.0</span>
+<span class="font-sans text-[11px] text-slate-300 block mt-1">RFC 6962 Proof of Inclusion</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CẢNH 6: LÙI LẠI (ĐỘI NGŨ KIẾN TẠO & LỜI MỜI HÀNH ĐỘNG - NỀN TRẮNG SÁNG) -->
+<section class="w-full py-20 lg:py-28 bg-white">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
+<!-- Section Header: Team -->
+<div class="w-full flex flex-col items-center text-center mb-12">
+
+<h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold tracking-tight mb-3">
+    Những người nghiên cứu và xây dựng nền tảng Lucidex.
+  </h2>
+<p class="font-sans text-sm lg:text-base text-ink-muted max-w-2xl leading-relaxed">
+    Đội ngũ 5 thành viên sáng lập, trực tiếp nghiên cứu mật mã học, kiến trúc dữ liệu W3C DID và phát triển toàn diện hệ thống bảo chứng văn bằng Lucidex.
+  </p>
+</div>
+<!-- Interactive Team Showcase Carousel -->
+<div class="w-full mb-16 text-left">
+<!-- Slider Navigation Bar -->
+<div class="flex items-center justify-between gap-4 mb-5 border-b border-rule pb-3">
+<div class="flex items-center gap-2 font-mono text-xs text-ink-muted">
+<span class="font-bold text-academic-navy">05 THÀNH VIÊN NÒNG CỐT</span>
+<span class="">•</span>
+<span class="text-[11px]">HỘI ĐỒNG KỸ THUẬT &amp; QUẢN TRỊ LUCIDEX</span>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Previous Member" class="w-8 h-8 rounded-full border border-rule bg-white flex items-center justify-center hover:bg-academic-navy hover:text-white transition-colors text-sm font-mono shadow-xs" onclick="document.getElementById('team-scroll-container').scrollBy({left: -340, behavior: 'smooth'})" type="button">
+        ‹
+      </button>
+<button aria-label="Next Member" class="w-8 h-8 rounded-full border border-rule bg-white flex items-center justify-center hover:bg-academic-navy hover:text-white transition-colors text-sm font-mono shadow-xs" onclick="document.getElementById('team-scroll-container').scrollBy({left: 340, behavior: 'smooth'})" type="button">
+        ›
+      </button>
+</div>
+</div>
+<!-- Horizontal Scrolling Cards Track: Viền Slate-Blue, Thẻ Trắng Học Thuật -->
+<div class="flex items-stretch gap-6 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory" id="team-scroll-container" style="scrollbar-width: thin;">
+<!-- Member 1: Lê Tú Như -->
+<div class="w-[290px] sm:w-[320px] shrink-0 bg-white border border-rule-blue rounded-doc p-5 shadow-sm hover:shadow-navy transition-all flex flex-col justify-between snap-start group hover:border-academic-blue">
+<div>
+<div class="relative w-full aspect-square mb-4 rounded-doc overflow-hidden bg-surface-blue border border-rule">
+<img alt="Lê Tú Như - Product Lead / Governance Architect" class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdYio2YGZDCJkErWo8FWOwFGaUrazvLWp-jfS1YlEjOUYMyYKjsynDdbXCmKG3vX0ExEGdqlcmvkASP1e40snTboSUKc83H0WarT5VWa0_pru3A8YvU_tw_lcx-snS6u-LBN8k_emVnG_L5sFGyw16qGHhW8sA6YihLBoV2HhILLraGBcqiElNCksZyQrmx_A619taEbEQaAXtEUjzAT7r7oYgii5J1_Mf4kerxwZLFPSyPzsM47uk">
+<div class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md border border-blue-200 font-mono text-[9px] text-academic-navy font-bold flex items-center gap-1 shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-accent"></span>
+<span class="">VERIFIED ARCHITECT</span>
+</div>
+<div class="absolute bottom-2 left-2.5 font-mono text-[9px] text-ink-muted bg-white/90 px-2 py-0.5 border border-rule rounded">
+            DID: VN-GOV#01
+          </div>
+</div>
+<div class="mb-2">
+<span class="font-mono text-[10.5px] text-academic-blue uppercase tracking-wider font-bold block mb-0.5">Product Lead / Governance Architect</span>
+<h3 class="font-serif text-xl font-bold text-academic-navy tracking-tight">Lê Tú Như</h3>
+</div>
+</div>
+<div class="pt-3 border-t border-rule font-mono text-[10.5px] text-ink-muted flex items-center justify-between">
+<span class="">KHÓA XÁC THỰC:</span>
+<span class="text-academic-navy font-bold">Ed25519-Gov</span>
+</div>
+</div>
+<!-- Member 2: Dương Hữu Đan -->
+<div class="w-[290px] sm:w-[320px] shrink-0 bg-white border border-rule-blue rounded-doc p-5 shadow-sm hover:shadow-navy transition-all flex flex-col justify-between snap-start group hover:border-academic-blue">
+<div>
+<div class="relative w-full aspect-square mb-4 rounded-doc overflow-hidden bg-surface-blue border border-rule">
+<img alt="Dương Hữu Đan - Cryptography &amp; Infrastructure Architect" class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNOGdncjQKMMIWPgx2n0fdTl7hUCX7NgDGtlZMbkuHqP7MdINOYZCaf99wWGpIywMirOpRDHcKeSEhX8iZYLoCZypYBJBG_VgypxP05CEQYioUcZ9EfEGFLevbfuG_0OvW7JsL2tE4BzAehV2o4DZLxfC1SwQk63OZB9v-fizDEXfv4qEt_X_CwuUL8s6aNC4CjIX58oo1k_JFWHHCnu0Fp3ZBUZRt66AO29btEvYtcflR8G-NWB2h">
+<div class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md border border-blue-200 font-mono text-[9px] text-academic-navy font-bold flex items-center gap-1 shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-accent"></span>
+<span class="">CORE CRYPTO</span>
+</div>
+<div class="absolute bottom-2 left-2.5 font-mono text-[9px] text-ink-muted bg-white/90 px-2 py-0.5 border border-rule rounded">
+            DID: VN-CRYPTO#02
+          </div>
+</div>
+<div class="mb-2">
+<span class="font-mono text-[10.5px] text-academic-blue uppercase tracking-wider font-bold block mb-0.5">Cryptography &amp; Infrastructure Architect</span>
+<h3 class="font-serif text-xl font-bold text-academic-navy tracking-tight">Dương Hữu Đan</h3>
+</div>
+</div>
+<div class="pt-3 border-t border-rule font-mono text-[10.5px] text-ink-muted flex items-center justify-between">
+<span class="">THUẬT TOÁN:</span>
+<span class="text-academic-navy font-bold">SHA-256 / Merkle Tree</span>
+</div>
+</div>
+<!-- Member 3: Nguyễn Huy Hoàng -->
+<div class="w-[290px] sm:w-[320px] shrink-0 bg-white border border-rule-blue rounded-doc p-5 shadow-sm hover:shadow-navy transition-all flex flex-col justify-between snap-start group hover:border-academic-blue">
+<div>
+<div class="relative w-full aspect-square mb-4 rounded-doc overflow-hidden bg-surface-blue border border-rule">
+<img alt="Nguyễn Huy Hoàng - Lead Protocol Engineer / W3C DID" class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk_PA2FcmgZoAnvaaLVX2co9JpFhu1DPrnmq8TPspF6EXeRH2xAWEEOn2Y-kUt-q9aocmaRrfu8N4uJsMgZsuDG4SjZlMOb1e4-P_RN9wiUG7wGAS-dxJgVYeXC8Ii4lJo-y2lMdB8hD5863A8GYzlimoGtIuO2Ki1FF8CYEhZuD9vg9Vi91e-dGvqUieUj_d-ddE4C4n0wbaoBhqXN4zlN7VT3QKLbfrt7JArJL0BMD36tbh3Q6s-">
+<div class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md border border-blue-200 font-mono text-[9px] text-academic-navy font-bold flex items-center gap-1 shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-accent"></span>
+<span class="">DID PROTOCOL</span>
+</div>
+<div class="absolute bottom-2 left-2.5 font-mono text-[9px] text-ink-muted bg-white/90 px-2 py-0.5 border border-rule rounded">
+            DID: VN-PROTOCOL#03
+          </div>
+</div>
+<div class="mb-2">
+<span class="font-mono text-[10.5px] text-academic-blue uppercase tracking-wider font-bold block mb-0.5">Lead Protocol Engineer / W3C DID</span>
+<h3 class="font-serif text-xl font-bold text-academic-navy tracking-tight">Nguyễn Huy Hoàng</h3>
+</div>
+</div>
+<div class="pt-3 border-t border-rule font-mono text-[10.5px] text-ink-muted flex items-center justify-between">
+<span class="">TIÊU CHUẨN:</span>
+<span class="text-academic-navy font-bold">W3C VC v2.0 / ZKP</span>
+</div>
+</div>
+<!-- Member 4: Nguyễn Đăng Khoa -->
+<div class="w-[290px] sm:w-[320px] shrink-0 bg-white border border-rule-blue rounded-doc p-5 shadow-sm hover:shadow-navy transition-all flex flex-col justify-between snap-start group hover:border-academic-blue">
+<div>
+<div class="relative w-full aspect-square mb-4 rounded-doc overflow-hidden bg-surface-blue border border-rule">
+<img alt="Nguyễn Đăng Khoa - Fullstack &amp; Security Specialist" class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgyN5gW_aFfWMf0THIzs_iU9RkmAWZHHnP4TziRPqbjial3LMu3yVAjJhELr-ye9TwalWwPFJulWkP7QLCzdVGe-wKXxciwEV-DbjljlvrEE6D78hn1NsTTMz_zIA3XeYA66DZbvwTT7a6QZWD8w780EF5Nrv48keehcRvt29iaGX5CaZhRQLp9DTAS9SJ79hzyTroY6MxiK6VFFA3Jxe-WyxCfTdoRwBjaSHSPA1HJM3o1UZvuQSX">
+<div class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md border border-blue-200 font-mono text-[9px] text-academic-navy font-bold flex items-center gap-1 shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-accent"></span>
+<span class="">SECURITY ENG</span>
+</div>
+<div class="absolute bottom-2 left-2.5 font-mono text-[9px] text-ink-muted bg-white/90 px-2 py-0.5 border border-rule rounded">
+            DID: VN-SEC#04
+          </div>
+</div>
+<div class="mb-2">
+<span class="font-mono text-[10.5px] text-academic-blue uppercase tracking-wider font-bold block mb-0.5">Fullstack &amp; Security Specialist</span>
+<h3 class="font-serif text-xl font-bold text-academic-navy tracking-tight">Nguyễn Đăng Khoa</h3>
+</div>
+</div>
+<div class="pt-3 border-t border-rule font-mono text-[10.5px] text-ink-muted flex items-center justify-between">
+<span class="">CHỨNG NHẬN:</span>
+<span class="text-academic-navy font-bold">ISO/IEC 18013-5</span>
+</div>
+</div>
+<!-- Member 5: Trần Phú Phàm -->
+<div class="w-[290px] sm:w-[320px] shrink-0 bg-white border border-rule-blue rounded-doc p-5 shadow-sm hover:shadow-navy transition-all flex flex-col justify-between snap-start group hover:border-academic-blue">
+<div>
+<div class="relative w-full aspect-square mb-4 rounded-doc overflow-hidden bg-surface-blue border border-rule">
+<img alt="Trần Phú Phàm - Strategic Partnerships &amp; Accreditation" class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxeU9STZBbevF1krmq56c3KOKviY_Hcuxqyfvic9Y-UgmIGYYsCf70LQX2EW4QGtnkeaOM2FLqI5H0xOm-3P-AP_KMnQffGRHTA8cVG8mPkFq3JWs0tLIIOORg0JxpApHMZq9hVYSDqcloUaSlRpHAqTHDQ6GbZMEGUDCvsNMxuKtvbBBVtZPJFzxfLz57J3TRh0fmVJrgA25jGAyt-54UnYigLrnA0nl7b9SWMv2_emzAsl2KQDLT">
+<div class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md border border-blue-200 font-mono text-[9px] text-academic-navy font-bold flex items-center gap-1 shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-accent"></span>
+<span class="">PARTNERSHIPS</span>
+</div>
+<div class="absolute bottom-2 left-2.5 font-mono text-[9px] text-ink-muted bg-white/90 px-2 py-0.5 border border-rule rounded">
+            DID: VN-REL#05
+          </div>
+</div>
+<div class="mb-2">
+<span class="font-mono text-[10.5px] text-academic-blue uppercase tracking-wider font-bold block mb-0.5">Strategic Partnerships &amp; Accreditation</span>
+<h3 class="font-serif text-xl font-bold text-academic-navy tracking-tight">Trần Phú Phàm</h3>
+</div>
+</div>
+<div class="pt-3 border-t border-rule font-mono text-[10.5px] text-ink-muted flex items-center justify-between">
+<span class="">MẠNG LƯỚI:</span>
+<span class="text-academic-navy font-bold">50+ Cơ sở đại học</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Call to Action Section -->
+<div class="flex flex-col items-center text-center pt-8 border-t border-rule w-full">
+<h2 class="font-serif text-3xl lg:text-4xl text-academic-navy font-semibold tracking-tight max-w-2xl mb-8 leading-snug">
+    Bảo toàn niềm tin học thuật cho hàng triệu thế hệ cử nhân.
+  </h2>
+<a class="inline-flex items-center justify-center font-sans text-sm font-semibold px-8 py-3.5 rounded-full bg-academic-navy text-white hover:bg-academic-blue hover:shadow-navy transition-all shadow-sm" href="#canh-4">
+    Trải nghiệm cổng xác thực công khai
+  </a>
+<p class="font-sans text-xs text-ink-muted mt-4">
+    Không cần tạo tài khoản để kiểm tra tính hợp lệ của một văn bằng đã số hóa.
+  </p>
+</div></div>
+</section>
+</main>
+<!-- FOOTER CHUẨN IN ẤN BẢO AN (NỀN XANH ĐEN MIDNIGHT NAVY #0B132B) -->
+<footer class="w-full bg-midnight text-white border-t border-blue-900/40">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-16">
+<!-- Top Institutional Authority Banner -->
+<div class="pb-10 mb-12 border-b border-blue-900/40">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<div>
+
+<div class="flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-3">
+<img alt="Lucidex Logo" class="h-7 w-auto object-contain brightness-200 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWUgqUnXUcVF3qh6kvEDOAhCb4kII8euzeBIaCr84DstQFOI_ygNh-H_-RgiOxxFvbtHhdxW-nnHrF6VSm7U0Gan3rQnmlVXSmeDJL4D_Cpbhjf-5tzHIJ9esL7DXlr107pVyRvNjdFgfVoaEeGoTZy5C0-EHRT6A_24Q3ZsbtX8KQIQF9zulkxQS9KtiJtdheDqbTItqNwJsUq99gX7DQCV0S-3fB9ohcVb_pZ_YUm_00m2k-aLG0WpYgf-EhUIjSRA">
+<div class="border-l border-blue-800 pl-3">
+<p class="font-serif text-lg text-white font-semibold tracking-tight">Lucidex Archival Trust Network</p>
+<p class="font-mono text-[10px] text-blue-200/70 uppercase tracking-wider">Cơ sở hạ tầng giám thực &amp; đối soát văn bằng học thuật quốc gia</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Institutional Seals & Accreditations Badges -->
+<div class="flex flex-wrap items-center gap-3">
+<div class="px-3.5 py-2 rounded-doc bg-midnight-card border border-blue-900/60 flex items-center gap-2.5 font-mono text-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<div>
+<span class="block text-[9px] text-blue-300/70 uppercase tracking-widest">TRẠNG THÁI HỆ THỐNG</span>
+<span class="text-[11px] text-white font-semibold">VẬN HÀNH BẢO AN 99.99%</span>
+</div>
+</div>
+<div class="px-3.5 py-2 rounded-doc bg-midnight-card border border-blue-900/60 flex items-center gap-2.5 font-mono text-xs">
+<span class="text-cyan-400 text-sm font-bold">§</span>
+<div>
+<span class="block text-[9px] text-blue-300/70 uppercase tracking-widest">LUẬT GDĐT 20/2023/QH15</span>
+<span class="text-[11px] text-white font-semibold">GIÁ TRỊ CHỨNG CỨ PHÁP LÝ</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4-Column High Authority Information Architecture -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14 text-left">
+<!-- Column 1: Cơ quan giám thực -->
+<div class="lg:col-span-4 flex flex-col gap-3.5">
+<span class="font-mono text-[11px] uppercase tracking-wider text-blue-300 font-bold flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-cyan-400"></span>
+      CƠ QUAN GIÁM THỰC &amp; CHỦ QUẢN
+    </span>
+<p class="font-sans text-xs text-slate-300 leading-relaxed">Công ty TNHH Lucidex</p>
+<div class="space-y-2 pt-2 border-t border-blue-900/40 font-mono text-xs text-slate-300">
+<div class="flex items-start gap-2">
+<span class="text-slate-400 shrink-0 text-[10px]">TRỤ SỞ:</span>
+<span class="text-[11px] text-slate-200 leading-snug">Tòa Nhà Mobifone, Khu dân cư Hưng Phú, Quần Cái Răng, TP.Cần Thơ</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-400 shrink-0 text-[10px]">HOTLINE:</span>
+<span class="text-[11px] text-white font-semibold">0907800650</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-400 shrink-0 text-[10px]">EMAIL PHÁP LÝ:</span>
+<span class="text-[11px] text-cyan-300 underline decoration-cyan-500/40">registry@lucidex.gov.spec</span>
+</div>
+</div>
+</div>
+<!-- Column 2: Tiêu chuẩn mật mã & an toàn -->
+<div class="lg:col-span-3 flex flex-col gap-2.5 font-mono text-xs">
+<span class="text-[11px] uppercase tracking-wider text-blue-300 font-bold mb-1 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-cyan-400"></span>
+      TIÊU CHUẨN MẬT MÃ BẢO AN
+    </span>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> W3C VC Data Model v2.0 &amp; DIDs
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> Ed25519 &amp; SECP-256k1 Curve
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> ISO/IEC 18013-5 &amp; ISO/IEC 27001
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> RFC 6962 Merkle Tree Audit
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> Cấp độ 4 An toàn TT Quốc gia
+    </p>
+</div>
+<!-- Column 3: Mạng lưới liên minh -->
+<div class="lg:col-span-3 flex flex-col gap-2.5 font-mono text-xs">
+<span class="text-[11px] uppercase tracking-wider text-blue-300 font-bold mb-1 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-cyan-400"></span>
+      LIÊN MINH HỌC THUẬT &amp; DỊCH VỤ
+    </span>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> Hệ thống Đại học Quốc gia &amp; Trọng điểm
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> Tích hợp Định danh Điện tử VNeID Mức 2
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> Giám sát không gian mạng NCSC
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> Khung liên thông Châu Á EDCI/APAC
+    </p>
+<p class="text-slate-300 flex items-center gap-2">
+<span class="w-1 h-1 bg-cyan-400"></span> Cổng dịch vụ công Quốc gia
+    </p>
+</div>
+<!-- Column 4: Tra cứu & Pháp lý -->
+<div class="lg:col-span-2 flex flex-col gap-2 font-mono text-xs">
+<span class="text-[11px] uppercase tracking-wider text-blue-300 font-bold mb-1 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-cyan-400"></span>
+      TRUY VẤN MINH BẠCH
+    </span>
+<a class="text-slate-300 hover:text-white transition-colors py-0.5" href="#canh-4">Nhật ký Merkle Proof</a>
+<a class="text-slate-300 hover:text-white transition-colors py-0.5" href="#">Báo cáo nghi vấn giả mạo</a>
+<a class="text-slate-300 hover:text-white transition-colors py-0.5" href="#">Khóa công khai gốc (Root Key)</a>
+<a class="text-slate-300 hover:text-white transition-colors py-0.5" href="#">Quy chuẩn kỹ thuật QCVN</a>
+<a class="text-slate-300 hover:text-white transition-colors py-0.5" href="#">Kiểm toán bảo mật 2024</a>
+</div>
+</div>
+<!-- Bottom Bar: Legal Statement & Badges -->
+<div class="pt-8 border-t border-blue-900/40 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 font-mono text-[11px] text-slate-400">
+<div class="max-w-2xl leading-relaxed text-left">
+<p class="text-slate-200 font-medium mb-1">© 2024 - 2025 Lucidex National Academic Trust Protocol. Bảo lưu toàn bộ quyền pháp lý.</p>
+<p class="text-[10px] text-slate-400/80">Bản ghi mật mã phân tán có giá trị chứng cứ pháp lý đối soát vĩnh viễn theo Luật Giao dịch Điện tử số 20/2023/QH15 và Nghị định quản lý văn bằng chứng chỉ hiện hành.</p>
+</div>
+<div class="flex flex-wrap items-center gap-6 shrink-0">
+<a class="hover:text-cyan-300 transition-colors" href="#">Cơ sở pháp lý</a>
+<a class="hover:text-cyan-300 transition-colors" href="#">Quy chuẩn an toàn</a>
+<a class="hover:text-cyan-300 transition-colors" href="#">Giải quyết khiếu nại</a>
+<a class="hover:text-cyan-300 transition-colors" href="#">Nhật ký vận hành</a>
+</div>
+</div></div>
+</footer>
+<!-- SCRIPT ĐIỀU KHIỂN HÀNH TRÌNH CAMERA ZOOM VĂN BẰNG (INTERACTIVE CAMERA VIEWER) -->
+<script>
+  const cameraConfig = {
+    overview: {
+      scale: 1,
+      x: 0,
+      y: 0,
+      zoomText: 'ĐỘ PHÓNG ĐẠI: 1.00x (100%)',
+      coordText: 'TỌA ĐỘ: [X: 00 | Y: 00]',
+      title: 'CHẾ ĐỘ 01: TOÀN CẢNH VĂN BẰNG (FULL OVERVIEW)',
+      desc: 'Toàn văn chứng chỉ cử nhân trên nền phôi giấy cotton-cellulose 160g, thể thức chuẩn quốc gia kết hợp định danh số.'
+    },
+    guilloche: {
+      scale: 2.5,
+      x: 230,
+      y: 140,
+      zoomText: 'ĐỘ PHÓNG ĐẠI: 2.50x (250%)',
+      coordText: 'TỌA ĐỘ: [X: -230 | Y: -140]',
+      title: 'CHẾ ĐỘ 02: HOA VĂN GUILLOCHE & THỚ GIẤY COTTON CHỐNG SAO CHÉP',
+      desc: 'Cận cảnh viền an ninh intaglio với các đường vân sóng phức tạp và thớ sợi cellulose ngẫu nhiên chống làm giả quang học.'
+    },
+    seal: {
+      scale: 2.8,
+      x: -200,
+      y: -145,
+      zoomText: 'ĐỘ PHÓNG ĐẠI: 2.80x (280%)',
+      coordText: 'TỌA ĐỘ: [X: +200 | Y: +145]',
+      title: 'CHẾ ĐỘ 03: CẬN CẢNH CON DẤU SỐ LUCIDEX DẬP MỰC ĐỎ',
+      desc: 'Con dấu số vector bảo an sắc nét với chuỗi khắc chữ vi mô, chuẩn Ed25519/Secp256k1 và liên kết định danh tổ chức W3C DID.'
+    },
+    hash: {
+      scale: 2.2,
+      x: 150,
+      y: -140,
+      zoomText: 'ĐỘ PHÓNG ĐẠI: 2.20x (220%)',
+      coordText: 'TỌA ĐỘ: [X: -150 | Y: +140]',
+      title: 'CHẾ ĐỘ 04: KHÓA ĐỊNH DANH & MÃ BĂM BẢO NGUYÊN SHA-256',
+      desc: 'Bản in mã băm 256-bit độc bản của hồ sơ sinh viên, đối soát với cây Merkle của nhà trường để phát hiện sửa đổi tức thì.'
+    }
+  };
+
+  const viewKeys = ['overview', 'guilloche', 'seal', 'hash'];
+  let currentViewIndex = 0;
+
+  function setCameraView(viewKey, clickedButton) {
+    const config = cameraConfig[viewKey];
+    if (!config) return;
+
+    currentViewIndex = viewKeys.indexOf(viewKey);
+
+    const subject = document.getElementById('diploma-subject');
+    const zoomIndicator = document.getElementById('camera-zoom-indicator');
+    const coordIndicator = document.getElementById('camera-coord-indicator');
+    const titleEl = document.getElementById('cam-title');
+    const descEl = document.getElementById('cam-desc');
+
+    if (subject) {
+      subject.style.transform = `scale(${config.scale}) translate(${config.x}px, ${config.y}px)`;
+    }
+
+    if (zoomIndicator) zoomIndicator.innerText = config.zoomText;
+    if (coordIndicator) coordIndicator.innerText = config.coordText;
+    if (titleEl) titleEl.innerText = config.title;
+    if (descEl) descEl.innerText = config.desc;
+
+    // Update active button state to academic navy
+    document.querySelectorAll('.camera-btn').forEach(btn => {
+      btn.classList.remove('bg-academic-navy', 'text-white', 'font-semibold');
+      btn.classList.add('text-ink-muted', 'font-medium');
+    });
+
+    if (clickedButton) {
+      clickedButton.classList.add('bg-academic-navy', 'text-white', 'font-semibold');
+      clickedButton.classList.remove('text-ink-muted', 'font-medium');
+    } else {
+      const activeBtn = document.querySelector(`.camera-btn[data-view="${viewKey}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-academic-navy', 'text-white', 'font-semibold');
+        activeBtn.classList.remove('text-ink-muted', 'font-medium');
+      }
+    }
+  }
+
+  function stepCamera(direction) {
+    let nextIndex = currentViewIndex + direction;
+    if (nextIndex < 0) nextIndex = viewKeys.length - 1;
+    if (nextIndex >= viewKeys.length) nextIndex = 0;
+    const nextKey = viewKeys[nextIndex];
+    setCameraView(nextKey);
+  }
+</script>
+
+
+
+
+
+
+</body></html>
